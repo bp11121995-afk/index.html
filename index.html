@@ -3,16 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quick Car Rental Malta</title>
+<title>EZ Car Rental Malta</title>
 
 <style>
 body{
   margin:0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family:'Segoe UI',sans-serif;
   background:#f5f7fa;
   color:#222;
 }
 
+/* NAVIGATION */
 nav{
   position:fixed;
   width:100%;
@@ -28,9 +29,10 @@ nav a{
   font-weight:bold;
 }
 
+/* HERO */
 .hero{
-  background:linear-gradient(rgba(0,0,40,0.75), rgba(0,0,40,0.75)),
-  url('https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e');
+  background:linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),
+  url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c');
   background-size:cover;
   background-position:center;
   height:100vh;
@@ -53,6 +55,7 @@ nav a{
   margin-bottom:30px;
 }
 
+/* BOOKING BOX */
 .booking-box{
   background:white;
   padding:30px;
@@ -64,7 +67,7 @@ nav a{
 
 .booking-box form{
   display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
   gap:15px;
 }
 
@@ -85,6 +88,7 @@ nav a{
   cursor:pointer;
 }
 
+/* SECTIONS */
 section{
   padding:80px 20px;
   text-align:center;
@@ -115,6 +119,16 @@ section{
   transform:translateY(-5px);
 }
 
+.car-card a{
+  display:inline-block;
+  margin-top:10px;
+  background:#0a1f44;
+  color:white;
+  padding:8px 15px;
+  text-decoration:none;
+  border-radius:6px;
+}
+
 footer{
   background:#0a1f44;
   color:white;
@@ -134,8 +148,8 @@ footer{
 
 <!-- HERO -->
 <div class="hero">
-  <h1>Quick Car Rental Malta</h1>
-  <p>Airport Pickup • Island Delivery • Best Prices</p>
+  <h1>EZ Car Rental Malta</h1>
+  <p>Airport Pickup • Island Delivery • Best Local Prices</p>
 
   <div class="booking-box">
     <form onsubmit="sendToWhatsApp(); return false;">
@@ -173,51 +187,33 @@ footer{
 <div class="cars">
 
 <div class="car-card">
-<img src="https://images.unsplash.com/photo-1549924231-f129b911e442">
-<h3>Mini – Toyota Aygo</h3>
+<img src="https://images.pexels.com/photos/5733711/pexels-photo-5733711.jpeg">
+<h3>Mini – Toyota Yaris</h3>
 <p>From €8/day</p>
 </div>
 
 <div class="car-card">
-<img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d">
-<h3>Economy – Toyota Yaris</h3>
+<img src="https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg">
+<h3>Compact – Toyota Corolla</h3>
 <p>From €12/day</p>
 </div>
 
 <div class="car-card">
-<img src="https://images.unsplash.com/photo-1502877338535-766e1452684a">
-<h3>Compact – VW Polo</h3>
+<img src="https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg">
+<h3>SUV – Nissan Qashqai</h3>
 <p>From €16/day</p>
 </div>
 
 <div class="car-card">
-<img src="https://images.unsplash.com/photo-1493238792000-8113da705763">
-<h3>Sedan – Skoda Octavia</h3>
+<img src="https://images.pexels.com/photos/907483/pexels-photo-907483.jpeg">
+<h3>Family Van – 7 Seater</h3>
 <p>From €20/day</p>
 </div>
 
 <div class="car-card">
-<img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c">
-<h3>SUV – Nissan Qashqai</h3>
+<img src="https://images.pexels.com/photos/11491397/pexels-photo-11491397.jpeg">
+<h3>9 Seater – Passenger Van</h3>
 <p>From €24/day</p>
-</div>
-
-<div class="car-card">
-<img src="https://images.unsplash.com/photo-1542362567-b07e54358753">
-<h3>Family Van – Peugeot Rifter</h3>
-<p>From €28/day</p>
-</div>
-
-<div class="car-card">
-<img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6">
-<h3>7 Seater – VW Touran</h3>
-<p>From €32/day</p>
-</div>
-
-<div class="car-card">
-<img src="https://images.unsplash.com/photo-1592198084033-aade902d1aae">
-<h3>9 Seater – Renault Trafic</h3>
-<p>From €36/day</p>
 </div>
 
 </div>
@@ -225,19 +221,25 @@ footer{
 
 <!-- EXPLORE MALTA -->
 <section id="explore">
-<h2>Explore Malta With Our Cars</h2>
+<h2>Explore Malta</h2>
 <div class="cars">
 
 <div class="car-card">
-<img src="https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f">
+<img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c">
 <h3>Valletta</h3>
 <a href="https://www.google.com/maps?q=Valletta+Malta" target="_blank">View Location</a>
 </div>
 
 <div class="car-card">
-<img src="https://images.unsplash.com/photo-1583406758598-0b4a0d7b2e7d">
+<img src="https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f">
 <h3>Mdina</h3>
 <a href="https://www.google.com/maps?q=Mdina+Malta" target="_blank">View Location</a>
+</div>
+
+<div class="car-card">
+<img src="https://images.unsplash.com/photo-1583406758598-0b4a0d7b2e7d">
+<h3>Golden Bay</h3>
+<a href="https://www.google.com/maps?q=Golden+Bay+Malta" target="_blank">View Location</a>
 </div>
 
 <div class="car-card">
@@ -246,22 +248,16 @@ footer{
 <a href="https://www.google.com/maps?q=Sliema+Malta" target="_blank">View Location</a>
 </div>
 
-<div class="car-card">
-<img src="https://images.unsplash.com/photo-1601042879373-7f98e1b9b1c6">
-<h3>Golden Bay</h3>
-<a href="https://www.google.com/maps?q=Golden+Bay+Malta" target="_blank">View Location</a>
-</div>
-
 </div>
 </section>
 
 <footer>
-© 2026 Quick Car Rental Malta • Always Available • WhatsApp Booking
+© 2026 EZ Car Rental Malta • Always Available • WhatsApp Booking
 </footer>
 
 <script>
 function sendToWhatsApp(){
-  let message = "Hello, I want to check availability for Quick Car Rental Malta.";
+  let message = "Hello, I want to check availability for EZ Car Rental Malta.";
   window.open("https://wa.me/356YOURNUMBER?text=" + encodeURIComponent(message), "_blank");
 }
 </script>
