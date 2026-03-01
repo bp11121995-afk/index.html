@@ -13,10 +13,24 @@ body{
   color:#222;
 }
 
-/* HERO SECTION */
+nav{
+  position:fixed;
+  width:100%;
+  background:#0a1f44;
+  padding:15px;
+  text-align:center;
+  z-index:1000;
+}
+nav a{
+  color:white;
+  margin:0 20px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
 .hero{
   background:linear-gradient(rgba(0,0,40,0.75), rgba(0,0,40,0.75)),
-  url('https://images.unsplash.com/photo-1503376780353-7e6692767b70');
+  url('https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e');
   background-size:cover;
   background-position:center;
   height:100vh;
@@ -39,7 +53,6 @@ body{
   margin-bottom:30px;
 }
 
-/* BOOKING FORM */
 .booking-box{
   background:white;
   padding:30px;
@@ -70,14 +83,8 @@ body{
   font-weight:bold;
   border-radius:6px;
   cursor:pointer;
-  transition:0.3s;
 }
 
-.booking-box button:hover{
-  background:#12316b;
-}
-
-/* CARS SECTION */
 section{
   padding:80px 20px;
   text-align:center;
@@ -92,32 +99,22 @@ section{
 
 .car-card{
   background:white;
-  padding:25px;
+  padding:20px;
   width:280px;
   border-radius:12px;
   box-shadow:0 8px 20px rgba(0,0,0,0.08);
   transition:0.3s;
 }
 
+.car-card img{
+  width:100%;
+  border-radius:8px;
+}
+
 .car-card:hover{
   transform:translateY(-5px);
 }
 
-.car-card h3{
-  margin-top:0;
-  color:#0a1f44;
-}
-
-/* MAP SECTION */
-.map iframe{
-  width:100%;
-  max-width:900px;
-  height:400px;
-  border-radius:12px;
-  border:none;
-}
-
-/* FOOTER */
 footer{
   background:#0a1f44;
   color:white;
@@ -129,76 +126,145 @@ footer{
 
 <body>
 
+<nav>
+  <a href="#">Home</a>
+  <a href="#fleet">Fleet</a>
+  <a href="#explore">Explore Malta</a>
+</nav>
+
 <!-- HERO -->
 <div class="hero">
   <h1>Quick Car Rental Malta</h1>
-  <p>Premium Car Hire • Airport Pickup • Best Prices 2026</p>
+  <p>Airport Pickup • Island Delivery • Best Prices</p>
 
   <div class="booking-box">
-    <form>
+    <form onsubmit="sendToWhatsApp(); return false;">
       <input type="date" required>
       <input type="date" required>
 
       <select required>
         <option value="">Pickup Location</option>
-        <option>Malta Airport</option>
+        <option>Malta International Airport</option>
         <option>Sliema</option>
         <option>St Julian's</option>
         <option>Valletta</option>
       </select>
 
       <select required>
-        <option value="">Car Type</option>
-        <option>Economy</option>
-        <option>SUV</option>
-        <option>Luxury</option>
+        <option value="">Car Category</option>
+        <option>Mini €8/day</option>
+        <option>Economy €12/day</option>
+        <option>Compact €16/day</option>
+        <option>Sedan €20/day</option>
+        <option>SUV €24/day</option>
+        <option>Family Van €28/day</option>
+        <option>7 Seater €32/day</option>
+        <option>9 Seater €36/day</option>
       </select>
 
-      <input type="text" placeholder="Full Name" required>
-      <input type="email" placeholder="Email Address" required>
-
-      <button type="submit">Search Availability</button>
+      <button type="submit">Check Availability</button>
     </form>
   </div>
 </div>
 
-<!-- CARS -->
-<section>
-  <h2>Our Fleet</h2>
-  <div class="cars">
-    <div class="car-card">
-      <h3>Economy</h3>
-      <p>From €25/day</p>
-      <p>Perfect for city driving in Malta.</p>
-    </div>
+<!-- FLEET -->
+<section id="fleet">
+<h2>Our Fleet</h2>
+<div class="cars">
 
-    <div class="car-card">
-      <h3>SUV</h3>
-      <p>From €45/day</p>
-      <p>Comfort for family trips and long drives.</p>
-    </div>
+<div class="car-card">
+<img src="https://images.unsplash.com/photo-1549924231-f129b911e442">
+<h3>Mini – Toyota Aygo</h3>
+<p>From €8/day</p>
+</div>
 
-    <div class="car-card">
-      <h3>Luxury</h3>
-      <p>From €80/day</p>
-      <p>Drive premium across Valletta & Gozo.</p>
-    </div>
-  </div>
+<div class="car-card">
+<img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d">
+<h3>Economy – Toyota Yaris</h3>
+<p>From €12/day</p>
+</div>
+
+<div class="car-card">
+<img src="https://images.unsplash.com/photo-1502877338535-766e1452684a">
+<h3>Compact – VW Polo</h3>
+<p>From €16/day</p>
+</div>
+
+<div class="car-card">
+<img src="https://images.unsplash.com/photo-1493238792000-8113da705763">
+<h3>Sedan – Skoda Octavia</h3>
+<p>From €20/day</p>
+</div>
+
+<div class="car-card">
+<img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c">
+<h3>SUV – Nissan Qashqai</h3>
+<p>From €24/day</p>
+</div>
+
+<div class="car-card">
+<img src="https://images.unsplash.com/photo-1542362567-b07e54358753">
+<h3>Family Van – Peugeot Rifter</h3>
+<p>From €28/day</p>
+</div>
+
+<div class="car-card">
+<img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6">
+<h3>7 Seater – VW Touran</h3>
+<p>From €32/day</p>
+</div>
+
+<div class="car-card">
+<img src="https://images.unsplash.com/photo-1592198084033-aade902d1aae">
+<h3>9 Seater – Renault Trafic</h3>
+<p>From €36/day</p>
+</div>
+
+</div>
 </section>
 
-<!-- MAP -->
-<section>
-  <h2>Find Us</h2>
-  <div class="map">
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50755.29104240449!2d14.401291617522299!3d35.89972387200047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x130d33c0b1852bdb%3A0x7a516b30387b1658!2sMalta%20International%20Airport!5e0!3m2!1sen!2smt!4v1679520324162!5m2!1sen!2smt">
-    </iframe>
-  </div>
+<!-- EXPLORE MALTA -->
+<section id="explore">
+<h2>Explore Malta With Our Cars</h2>
+<div class="cars">
+
+<div class="car-card">
+<img src="https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f">
+<h3>Valletta</h3>
+<a href="https://www.google.com/maps?q=Valletta+Malta" target="_blank">View Location</a>
+</div>
+
+<div class="car-card">
+<img src="https://images.unsplash.com/photo-1583406758598-0b4a0d7b2e7d">
+<h3>Mdina</h3>
+<a href="https://www.google.com/maps?q=Mdina+Malta" target="_blank">View Location</a>
+</div>
+
+<div class="car-card">
+<img src="https://images.unsplash.com/photo-1601042879364-f3947d3f9c16">
+<h3>Sliema</h3>
+<a href="https://www.google.com/maps?q=Sliema+Malta" target="_blank">View Location</a>
+</div>
+
+<div class="car-card">
+<img src="https://images.unsplash.com/photo-1601042879373-7f98e1b9b1c6">
+<h3>Golden Bay</h3>
+<a href="https://www.google.com/maps?q=Golden+Bay+Malta" target="_blank">View Location</a>
+</div>
+
+</div>
 </section>
 
 <footer>
-  © 2026 Quick Car Rental Malta • Airport & Island Delivery Available
+© 2026 Quick Car Rental Malta • Always Available • WhatsApp Booking
 </footer>
+
+<script>
+function sendToWhatsApp(){
+  let message = "Hello, I want to check availability for Quick Car Rental Malta.";
+  window.open("https://wa.me/356YOURNUMBER?text=" + encodeURIComponent(message), "_blank");
+}
+</script>
 
 </body>
 </html>
