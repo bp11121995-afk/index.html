@@ -8,98 +8,120 @@
 <style>
 body{
     margin:0;
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f4f4f4;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background:#ffffff;
+    color:#333;
 }
 
 header{
-    background:url("https://images.unsplash.com/photo-1590080877777-3a5fbe4f0c2d") no-repeat center center/cover;
+    background:url("https://images.unsplash.com/photo-1549893074-4bcfda6c4f6d") no-repeat center center/cover;
     height:90vh;
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    color:white;
     text-align:center;
+    color:white;
 }
 
 header h1{
-    font-size:50px;
+    font-size:48px;
     margin:0;
-    background:rgba(0,0,0,0.6);
-    padding:15px 25px;
+    background:rgba(0,0,0,0.55);
+    padding:15px 30px;
+    border-radius:8px;
 }
 
 header p{
+    margin-top:15px;
     font-size:20px;
-    background:rgba(0,0,0,0.6);
+    background:rgba(0,0,0,0.55);
     padding:10px 20px;
+    border-radius:6px;
 }
 
 section{
-    padding:50px 10%;
-    text-align:center;
+    padding:70px 10%;
 }
 
 h2{
-    margin-bottom:30px;
+    text-align:center;
+    margin-bottom:50px;
+    color:#0077b6;
 }
 
 .fleet{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
 }
 
 .car{
-    background:white;
-    padding:15px;
-    border-radius:10px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    background:#f9f9f9;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    overflow:hidden;
+    transition:0.3s;
+}
+
+.car:hover{
+    transform:translateY(-5px);
 }
 
 .car img{
     width:100%;
-    height:160px;
+    height:200px;
     object-fit:cover;
-    border-radius:8px;
+}
+
+.car-content{
+    padding:20px;
+}
+
+.price{
+    color:#0096c7;
+    font-weight:bold;
+    margin-top:10px;
 }
 
 .places{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
 }
 
 .place{
-    background:white;
-    padding:15px;
-    border-radius:10px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    background:#f9f9f9;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    overflow:hidden;
 }
 
 .place img{
     width:100%;
-    height:160px;
+    height:200px;
     object-fit:cover;
-    border-radius:8px;
+}
+
+.place-content{
+    padding:20px;
 }
 
 .place a{
     display:inline-block;
     margin-top:10px;
-    padding:8px 12px;
-    background:#007bff;
+    background:#0077b6;
     color:white;
+    padding:8px 15px;
+    border-radius:6px;
     text-decoration:none;
-    border-radius:5px;
 }
 
 footer{
-    background:#111;
-    color:white;
-    padding:20px;
+    background:#f1f1f1;
     text-align:center;
+    padding:30px;
+    margin-top:60px;
 }
 </style>
 </head>
@@ -112,94 +134,112 @@ footer{
 </header>
 
 <section>
-    <h2>Our Fleet</h2>
-    <div class="fleet">
+<h2>Our Fleet</h2>
 
-        <div class="car">
-            <img src="https://images.unsplash.com/photo-1583267746897-2cf415887172">
-            <h3>Category A – Mini (Toyota Aygo / Similar)</h3>
-            <p>From €8 / day</p>
-        </div>
+<div class="fleet">
 
-        <div class="car">
-            <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d">
-            <h3>Category B – Economy (Toyota Yaris / Similar)</h3>
-            <p>From €12 / day</p>
-        </div>
+<div class="car">
+<img src="https://images.unsplash.com/photo-1682686580391-615b0b7b5f32">
+<div class="car-content">
+<h3>Toyota Aygo or Similar</h3>
+<p class="price">From €8 / day</p>
+</div>
+</div>
 
-        <div class="car">
-            <img src="https://images.unsplash.com/photo-1605559424843-9e4c22863f74">
-            <h3>Category C – Compact (VW Polo / Similar)</h3>
-            <p>From €16 / day</p>
-        </div>
+<div class="car">
+<img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d">
+<div class="car-content">
+<h3>Toyota Yaris or Similar</h3>
+<p class="price">From €12 / day</p>
+</div>
+</div>
 
-        <div class="car">
-            <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8">
-            <h3>Category D – Sedan</h3>
-            <p>From €20 / day</p>
-        </div>
+<div class="car">
+<img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a">
+<div class="car-content">
+<h3>VW Polo or Similar</h3>
+<p class="price">From €16 / day</p>
+</div>
+</div>
 
-        <div class="car">
-            <img src="https://images.unsplash.com/photo-1583267746926-7e38a6e4d53c">
-            <h3>Category E – SUV</h3>
-            <p>From €24 / day</p>
-        </div>
+<div class="car">
+<img src="https://images.unsplash.com/photo-1617531653332-bd46c24f2068">
+<div class="car-content">
+<h3>Nissan Qashqai or Similar</h3>
+<p class="price">From €20 / day</p>
+</div>
+</div>
 
-        <div class="car">
-            <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888">
-            <h3>Category F – 7 Seater</h3>
-            <p>From €28 / day</p>
-        </div>
+<div class="car">
+<img src="https://images.unsplash.com/photo-1624344975628-38e6f5de5b6b">
+<div class="car-content">
+<h3>Peugeot 5008 (7 Seater) or Similar</h3>
+<p class="price">From €24 / day</p>
+</div>
+</div>
 
-        <div class="car">
-            <img src="https://images.unsplash.com/photo-1621011822270-7f3e3e8c8c5c">
-            <h3>Category G – 9 Seater</h3>
-            <p>From €32 / day</p>
-        </div>
+<div class="car">
+<img src="https://images.unsplash.com/photo-1606611013013-6c82e2c9e1a0">
+<div class="car-content">
+<h3>Peugeot Expert (9 Seater) or Similar</h3>
+<p class="price">From €28 / day</p>
+</div>
+</div>
 
-    </div>
+</div>
 </section>
 
 <section>
-    <h2>Where To Go In Malta</h2>
-    <div class="places">
+<h2>Where To Go In Malta</h2>
 
-        <div class="place">
-            <img src="https://images.unsplash.com/photo-1589395937772-f6707a4b9e07">
-            <h3>Valletta</h3>
-            <a href="https://www.google.com/maps/place/Valletta" target="_blank">Open in Google Maps</a>
-        </div>
+<div class="places">
 
-        <div class="place">
-            <img src="https://images.unsplash.com/photo-1583430998593-5f7f0a1d3e41">
-            <h3>Mdina</h3>
-            <a href="https://www.google.com/maps/place/Mdina" target="_blank">Open in Google Maps</a>
-        </div>
+<div class="place">
+<img src="https://images.unsplash.com/photo-1583430998593-5f7f0a1d3e41">
+<div class="place-content">
+<h3>Valletta</h3>
+<a href="https://www.google.com/maps/place/Valletta" target="_blank">Open in Google Maps</a>
+</div>
+</div>
 
-        <div class="place">
-            <img src="https://images.unsplash.com/photo-1595332278747-5e2b4df43259">
-            <h3>Blue Lagoon – Comino</h3>
-            <a href="https://www.google.com/maps/place/Blue+Lagoon+Comino" target="_blank">Open in Google Maps</a>
-        </div>
+<div class="place">
+<img src="https://images.unsplash.com/photo-1589395937772-f6707a4b9e07">
+<div class="place-content">
+<h3>Mdina</h3>
+<a href="https://www.google.com/maps/place/Mdina" target="_blank">Open in Google Maps</a>
+</div>
+</div>
 
-        <div class="place">
-            <img src="https://images.unsplash.com/photo-1583430998608-4e11d7f07d5d">
-            <h3>Dingli Cliffs</h3>
-            <a href="https://www.google.com/maps/place/Dingli+Cliffs" target="_blank">Open in Google Maps</a>
-        </div>
+<div class="place">
+<img src="https://images.unsplash.com/photo-1595332278747-5e2b4df43259">
+<div class="place-content">
+<h3>Blue Lagoon - Comino</h3>
+<a href="https://www.google.com/maps/place/Blue+Lagoon+Comino" target="_blank">Open in Google Maps</a>
+</div>
+</div>
 
-        <div class="place">
-            <img src="https://images.unsplash.com/photo-1615884690994-9df6e4e2d653">
-            <h3>Golden Bay</h3>
-            <a href="https://www.google.com/maps/place/Golden+Bay+Malta" target="_blank">Open in Google Maps</a>
-        </div>
+<div class="place">
+<img src="https://images.unsplash.com/photo-1615884690994-9df6e4e2d653">
+<div class="place-content">
+<h3>Golden Bay</h3>
+<a href="https://www.google.com/maps/place/Golden+Bay+Malta" target="_blank">Open in Google Maps</a>
+</div>
+</div>
 
-    </div>
+<div class="place">
+<img src="https://images.unsplash.com/photo-1583430998608-4e11d7f07d5d">
+<div class="place-content">
+<h3>Dingli Cliffs</h3>
+<a href="https://www.google.com/maps/place/Dingli+Cliffs" target="_blank">Open in Google Maps</a>
+</div>
+</div>
+
+</div>
 </section>
 
 <footer>
-    <p>Quick Car Rental – Malta</p>
-    <p>We Are Always Available ✔</p>
+<p><strong>Quick Car Rental – Malta</strong></p>
+<p>We Are Always Available ✔</p>
 </footer>
 
 </body>
