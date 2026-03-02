@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Quick Rental Malta | Luxury Car Hire</title>
+<title>Quick Rental Malta</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -9,16 +9,15 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family: 'Segoe UI', sans-serif;
+font-family:'Segoe UI',sans-serif;
 scroll-behavior:smooth;
 }
 
 body{
-background: radial-gradient(circle at top, #111 0%, #000 60%);
+background:radial-gradient(circle at top,#111 0%,#000 60%);
 color:white;
 }
 
-/* GOLD COLOR */
 :root{
 --gold:#d4af37;
 }
@@ -38,8 +37,8 @@ animation:glow 3s ease-in-out infinite alternate;
 }
 
 @keyframes glow{
-from{ text-shadow:0 0 10px rgba(212,175,55,0.4);}
-to{ text-shadow:0 0 30px rgba(212,175,55,0.9);}
+from{text-shadow:0 0 10px rgba(212,175,55,0.4);}
+to{text-shadow:0 0 30px rgba(212,175,55,0.9);}
 }
 
 header p{
@@ -47,18 +46,6 @@ color:#aaa;
 margin-top:15px;
 font-size:14px;
 letter-spacing:2px;
-}
-
-/* HERO */
-.hero{
-text-align:center;
-padding:60px 20px;
-}
-
-.hero h2{
-font-size:28px;
-color:#ddd;
-font-weight:300;
 }
 
 /* FLEET */
@@ -96,7 +83,7 @@ color:var(--gold);
 font-weight:bold;
 }
 
-/* BOOKING SECTION */
+/* BOOKING */
 .booking{
 max-width:750px;
 margin:80px auto;
@@ -142,8 +129,22 @@ opacity:0.9;
 margin-top:20px;
 text-align:center;
 font-size:18px;
+line-height:1.8;
+}
+
+.result .rental{
 color:var(--gold);
-line-height:1.6;
+}
+
+.result .deposit{
+color:#ccc;
+}
+
+.result .total{
+color:var(--gold);
+font-size:20px;
+font-weight:bold;
+margin-top:10px;
 }
 
 /* FOOTER */
@@ -164,10 +165,6 @@ font-size:14px;
 <h1>QUICK RENTAL</h1>
 <p>Airport Pickup • Delivery Malta & Gozo • +356 7703 8260</p>
 </header>
-
-<section class="hero">
-<h2>Luxury Car Hire Experience in Malta</h2>
-</section>
 
 <section class="fleet">
 <div class="car-card"><h3>Toyota Aygo</h3><div class="price">€25/day</div></div>
@@ -215,6 +212,7 @@ font-size:14px;
 let bookedDates=["2026-06-10","2026-06-11"];
 
 function calculate(){
+
 let carPrice=parseFloat(document.getElementById("car").value);
 let start=new Date(document.getElementById("start").value);
 let end=new Date(document.getElementById("end").value);
@@ -231,27 +229,28 @@ return;
 let days=(end-start)/(1000*60*60*24);
 
 if(days>0){
+
 let rental=days*carPrice;
 
-/* Discount */
 if(days>=7){rental*=0.9;}
 
-/* Gozo fee */
 if(location.includes("gozo")){rental+=30;}
 
 let deposit=300;
 let total=rental+deposit;
 
 document.getElementById("total").innerHTML=
-"Rental: €"+rental.toFixed(2)+
-"<br>Deposit: €300"+
-"<br><strong>Total: €"+total.toFixed(2)+"</strong>";
+"<div class='rental'>Rental Price: €"+rental.toFixed(2)+"</div>"+
+"<div class='deposit'>Refundable Deposit: €"+deposit+" (Returned after rental)</div>"+
+"<div class='total'>Total to Pay Now: €"+total.toFixed(2)+"</div>";
+
 }else{
 document.getElementById("total").innerHTML="Please select valid dates.";
 }
 }
 
 function sendWhatsApp(){
+
 let car=document.getElementById("car").options[document.getElementById("car").selectedIndex].text;
 let start=document.getElementById("start").value;
 let end=document.getElementById("end").value;
