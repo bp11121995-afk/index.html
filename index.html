@@ -49,30 +49,44 @@ padding:0 15px;
 margin-top:-10px;
 }
 
-/* PLAN BUTTONS */
-.plan-buttons{
+/* OPTIONS */
+.options{
 display:flex;
 gap:10px;
+max-width:900px;
 margin:20px auto;
-max-width:650px;
 padding:0 15px;
+flex-wrap:wrap;
 }
 
-.plan-btn{
+.option{
 flex:1;
-padding:12px;
+min-width:250px;
+background:rgba(17,17,17,0.9);
+border:1px solid #222;
+border-radius:10px;
+padding:15px;
+text-align:center;
+}
+
+.option h3{
+color:var(--gold);
+}
+
+.option p{
+font-size:13px;
+color:#ccc;
+line-height:1.5;
+}
+
+.option button{
+margin-top:10px;
+width:100%;
+padding:10px;
 border:none;
 cursor:pointer;
-background:#111;
-color:#fff;
-border:1px solid #333;
-border-radius:8px;
-font-weight:bold;
-}
-
-.plan-btn.active{
 background:var(--gold);
-color:#000;
+font-weight:bold;
 }
 
 /* CARS */
@@ -109,6 +123,29 @@ background:rgba(17,17,17,0.9);
 border-radius:10px;
 }
 
+.plan-buttons{
+display:flex;
+gap:10px;
+margin-bottom:15px;
+}
+
+.plan-btn{
+flex:1;
+padding:12px;
+border:none;
+cursor:pointer;
+background:#111;
+color:#fff;
+border:1px solid #333;
+border-radius:8px;
+font-weight:bold;
+}
+
+.plan-btn.active{
+background:var(--gold);
+color:#000;
+}
+
 input,select{
 width:100%;
 padding:14px;
@@ -120,7 +157,7 @@ border-radius:6px;
 font-size:16px;
 }
 
-button{
+button.main{
 background:var(--gold);
 border:none;
 padding:12px;
@@ -135,12 +172,48 @@ margin-top:10px;
 color:var(--gold);
 line-height:1.6;
 }
+
+/* INSURANCE */
+.insurance{
+max-width:900px;
+margin:60px auto;
+padding:20px;
+}
+
+.ins-box{
+background:rgba(17,17,17,0.9);
+border:1px solid #222;
+padding:15px;
+border-radius:10px;
+margin:10px 0;
+}
+
+.ins-box h3{
+color:var(--gold);
+}
+
+.ins-actions{
+display:flex;
+gap:10px;
+margin-top:10px;
+flex-wrap:wrap;
+}
+
+.ins-actions a{
+background:var(--gold);
+color:#000;
+padding:8px 12px;
+text-decoration:none;
+font-weight:bold;
+border-radius:6px;
+font-size:13px;
+}
 </style>
 </head>
 
 <body>
 
-<!-- BACKGROUND VIDEO -->
+<!-- VIDEO -->
 <video autoplay muted loop playsinline id="bgVideo">
 <source src="https://cdn.coverr.co/videos/coverr-driving-through-a-tunnel-1578/1080p.mp4" type="video/mp4">
 </video>
@@ -155,11 +228,39 @@ line-height:1.6;
 🚗 Delivery Malta & Gozo • Hassle-free rental • We bring the car to your location
 </p>
 
-<!-- PLAN SELECT -->
-<div class="plan-buttons">
-<button class="plan-btn" id="pbtn1" onclick="setPlan(1)">Option 1</button>
-<button class="plan-btn" id="pbtn2" onclick="setPlan(2)">Option 2</button>
-<button class="plan-btn" id="pbtn3" onclick="setPlan(3)">Option 3</button>
+<!-- OPTIONS -->
+<div class="options">
+
+<div class="option">
+<h3>Option 1</h3>
+<p>
+Start €4/day<br>
+Deposit €1200<br>
+Excess €1200
+</p>
+<button onclick="setPlan(1)">Select</button>
+</div>
+
+<div class="option">
+<h3>Option 2</h3>
+<p>
+Start €9/day<br>
+Deposit €600<br>
+Excess €600
+</p>
+<button onclick="setPlan(2)">Select</button>
+</div>
+
+<div class="option">
+<h3>Option 3</h3>
+<p>
+Start €14/day<br>
+Deposit €300<br>
+Excess €300
+</p>
+<button onclick="setPlan(3)">Select</button>
+</div>
+
 </div>
 
 <!-- CARS -->
@@ -175,12 +276,18 @@ line-height:1.6;
 <!-- BOOKING -->
 <div class="booking">
 
+<div class="plan-buttons">
+<button class="plan-btn" id="pbtn1">Option 1</button>
+<button class="plan-btn" id="pbtn2">Option 2</button>
+<button class="plan-btn" id="pbtn3">Option 3</button>
+</div>
+
 <input id="name" placeholder="Full Name">
 
-<label>Pick-up Date</label>
+<label>Pick-up</label>
 <input type="date" id="pickup">
 
-<label>Drop-off Date</label>
+<label>Drop-off</label>
 <input type="date" id="dropoff">
 
 <input id="delivery" placeholder="Hotel / Airport / Address">
@@ -192,20 +299,44 @@ line-height:1.6;
 <option value="3">Qashqai</option>
 </select>
 
-<button onclick="calc()">Calculate Price</button>
+<button class="main" onclick="calc()">Calculate Price</button>
 
 <div class="result" id="result"></div>
 
-<button onclick="whatsapp()">WhatsApp Booking</button>
+<button class="main" onclick="whatsapp()">WhatsApp Booking</button>
+
+</div>
+
+<!-- INSURANCE -->
+<div class="insurance">
+
+<h2 style="text-align:center;color:#d4af37;">Recommended Full Cover Insurance</h2>
+
+<div class="ins-box">
+<h3>RentalCover</h3>
+<p>Global leader in rental excess insurance</p>
+<div class="ins-actions">
+<a href="https://www.rentalcover.com" target="_blank">Visit</a>
+<a href="https://www.trustpilot.com/review/rentalcover.com" target="_blank">Reviews</a>
+</div>
+</div>
+
+<div class="ins-box">
+<h3>CarHireExcess</h3>
+<p>Trusted UK car hire excess provider</p>
+<div class="ins-actions">
+<a href="https://www.carhireexcess.co.uk/?variant=2" target="_blank">Visit</a>
+<a href="https://www.trustpilot.com/review/carhireexcess.co.uk" target="_blank">Reviews</a>
+</div>
+</div>
 
 </div>
 
 <script>
 
-let plan=null;
+let plan=1;
 let prices=[];
 
-/* PLAN SYSTEM */
 function setPlan(p){
 plan=p;
 
@@ -217,10 +348,9 @@ if(p==1) document.getElementById("pbtn1").classList.add("active");
 if(p==2) document.getElementById("pbtn2").classList.add("active");
 if(p==3) document.getElementById("pbtn3").classList.add("active");
 
-/* PRICE LADDER */
 let start=4;
-if(plan==2) start=9;
-if(plan==3) start=14;
+if(p==2) start=9;
+if(p==3) start=14;
 
 prices=[];
 for(let i=0;i<4;i++){
@@ -229,11 +359,10 @@ document.getElementById("c"+i).innerText="€"+prices[i]+"/day";
 }
 }
 
-/* CALCULATE */
 function calc(){
 
 if(!plan){
-alert("Please select a plan first");
+alert("Select plan first");
 return;
 }
 
@@ -249,47 +378,28 @@ document.getElementById("result").innerText="Select valid dates";
 return;
 }
 
-let total = prices[car] * days;
+let total=prices[car]*days;
 
-let delivery=document.getElementById("delivery").value;
-
-document.getElementById("result").innerHTML =
+document.getElementById("result").innerHTML=
 "Plan: Option "+plan+"<br>"+
 "Days: "+days+"<br>"+
-"Price/day: €"+prices[car]+"<br>"+
-"Delivery: "+delivery+"<br><br>"+
 "<b>Total: €"+total.toFixed(2)+"</b>";
 }
 
-/* WHATSAPP */
 function whatsapp(){
-
-if(!plan){
-alert("Please select a plan first");
-return;
-}
 
 let name=document.getElementById("name").value;
 let car=document.getElementById("car").options[document.getElementById("car").selectedIndex].text;
-let pickup=document.getElementById("pickup").value;
-let dropoff=document.getElementById("dropoff").value;
-let delivery=document.getElementById("delivery").value;
 
 let msg=
-"Plan: Option "+plan+
+"Plan: "+plan+
 "%0AName: "+name+
-"%0ACar: "+car+
-"%0APickup: "+pickup+
-"%0ADropoff: "+dropoff+
-"%0ADelivery: "+delivery;
+"%0ACar: "+car;
 
 window.open("https://wa.me/35677038260?text="+msg);
 }
 
-/* DEFAULT */
-window.onload=function(){
 setPlan(1);
-};
 
 </script>
 
