@@ -5,64 +5,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
-}
-
 body{
+margin:0;
+font-family:Arial;
 background:#000;
-color:white;
+color:#fff;
 }
 
-:root{
---gold:#d4af37;
-}
+:root{ --gold:#d4af37; }
 
-/* HEADER */
 header{
 text-align:center;
-padding:50px 20px;
+padding:30px;
 border-bottom:1px solid #222;
 }
 
-header h1{
-color:var(--gold);
-font-size:45px;
-}
+h1{color:var(--gold);}
 
 /* PLANS */
 .plans{
-max-width:900px;
-margin:40px auto;
-text-align:center;
+max-width:850px;
+margin:auto;
 padding:20px;
 }
 
 .plan{
-background:#0a0a0a;
-border:1px solid #222;
-padding:20px;
+background:#111;
+padding:15px;
 margin:10px 0;
-border-radius:12px;
-}
-
-.plan h3{
-color:var(--gold);
-}
-
-.plan p{
-color:#ccc;
-font-size:14px;
-margin-top:5px;
+border:1px solid #222;
+border-radius:10px;
+text-align:center;
 }
 
 .plan button{
-margin-top:10px;
+margin:5px;
 padding:10px;
-width:60%;
+width:45%;
 background:var(--gold);
 border:none;
 font-weight:bold;
@@ -70,81 +49,61 @@ cursor:pointer;
 }
 
 /* CARS */
-.fleet{
-max-width:1000px;
-margin:40px auto;
+.cars{
+max-width:900px;
+margin:30px auto;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-padding:0 20px;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+padding:0 15px;
 }
 
 .car{
-background:#0a0a0a;
-padding:20px;
-border-radius:12px;
-border:1px solid #222;
+background:#111;
+padding:15px;
+border-radius:10px;
 text-align:center;
+border:1px solid #222;
 }
 
-.price{
-color:var(--gold);
-margin-top:10px;
-}
+.price{color:var(--gold);}
 
 /* BOOKING */
 .booking{
-max-width:700px;
-margin:60px auto;
-background:#0a0a0a;
-padding:30px;
-border-radius:15px;
-}
-
-label{
-font-size:13px;
-color:#aaa;
+max-width:600px;
+margin:40px auto;
+padding:20px;
+background:#111;
+border-radius:10px;
 }
 
 input,select{
 width:100%;
-padding:12px;
-margin:6px 0 12px;
-background:#111;
-border:1px solid #222;
-color:white;
-border-radius:8px;
-}
-
-button{
-width:100%;
-padding:12px;
-background:var(--gold);
-border:none;
-font-weight:bold;
-cursor:pointer;
-margin-top:10px;
+padding:10px;
+margin:8px 0;
+background:#000;
+border:1px solid #333;
+color:#fff;
 }
 
 .result{
-margin-top:15px;
-text-align:center;
-line-height:1.8;
+margin-top:10px;
+color:var(--gold);
 }
 
 /* INSURANCE */
 .insurance{
 max-width:900px;
-margin:80px auto;
+margin:60px auto;
 padding:20px;
 text-align:center;
 }
 
 .ins-box{
-background:#0a0a0a;
+background:#111;
 border:1px solid #222;
-padding:20px;
-border-radius:12px;
+padding:15px;
+border-radius:10px;
 margin:10px 0;
 text-align:left;
 }
@@ -163,12 +122,11 @@ display:inline-block;
 margin-top:10px;
 padding:8px 12px;
 background:var(--gold);
-color:black;
+color:#000;
 text-decoration:none;
 font-weight:bold;
 border-radius:6px;
 }
-
 </style>
 </head>
 
@@ -176,48 +134,47 @@ border-radius:6px;
 
 <header>
 <h1>QUICK RENTAL MALTA</h1>
-<p>Book your car in seconds</p>
+<p>Choose plan → prices update → book instantly</p>
 </header>
 
 <!-- PLANS -->
-<section class="plans">
+<div class="plans">
 
 <div class="plan">
-<h3>🟢 Option 1</h3>
+<h3>Option 1</h3>
 <p>Deposit €1200 / Excess €1200</p>
 <button onclick="setPlan(1)">Select Plan</button>
+<button onclick="scrollInsurance()">Insurance Cover</button>
 </div>
 
 <div class="plan">
-<h3>🟡 Option 2</h3>
+<h3>Option 2</h3>
 <p>Deposit €600 / Excess €600</p>
 <button onclick="setPlan(2)">Select Plan</button>
+<button onclick="scrollInsurance()">Insurance Cover</button>
 </div>
 
 <div class="plan">
-<h3>🔴 Option 3</h3>
+<h3>Option 3</h3>
 <p>Deposit €300 / Excess €300</p>
 <button onclick="setPlan(3)">Select Plan</button>
+<button onclick="scrollInsurance()">Insurance Cover</button>
 </div>
 
-</section>
+</div>
 
 <!-- CARS -->
-<section class="fleet">
+<div class="cars">
 
-<div class="car"><h3>Toyota Aygo</h3><div class="price" id="c0">€25/day</div></div>
-<div class="car"><h3>Toyota Yaris</h3><div class="price" id="c1">€30/day</div></div>
-<div class="car"><h3>VW Polo</h3><div class="price" id="c2">€35/day</div></div>
-<div class="car"><h3>Nissan Qashqai</h3><div class="price" id="c3">€45/day</div></div>
-<div class="car"><h3>Peugeot 5008</h3><div class="price" id="c4">€55/day</div></div>
-<div class="car"><h3>BMW 3 Series</h3><div class="price" id="c5">€90/day</div></div>
+<div class="car">Toyota Aygo <div class="price" id="c0">€25</div></div>
+<div class="car">Toyota Yaris <div class="price" id="c1">€30</div></div>
+<div class="car">VW Polo <div class="price" id="c2">€35</div></div>
+<div class="car">Nissan Qashqai <div class="price" id="c3">€45</div></div>
 
-</section>
+</div>
 
 <!-- BOOKING -->
-<section class="booking">
-
-<h2>BOOK YOUR CAR</h2>
+<div class="booking">
 
 <input id="name" placeholder="Full Name">
 
@@ -232,38 +189,40 @@ border-radius:6px;
 <option value="1">Toyota Yaris</option>
 <option value="2">VW Polo</option>
 <option value="3">Nissan Qashqai</option>
-<option value="4">Peugeot 5008</option>
-<option value="5">BMW 3 Series</option>
 </select>
 
 <button onclick="calculate()">Calculate Price</button>
 
 <div class="result" id="result"></div>
 
-<button onclick="sendWhatsApp()">Book via WhatsApp</button>
+<button onclick="whatsapp()">Book via WhatsApp</button>
 
-</section>
+</div>
 
 <!-- INSURANCE -->
-<section class="insurance">
+<div class="insurance">
 
-<h2>🛡️ Trusted Insurance Partners</h2>
+<h2 style="color:#d4af37;">Excess Insurance Options</h2>
 
 <div class="ins-box">
-<h3>:contentReference[oaicite:0]{index=0}</h3>
-<p>Global leader in rental excess insurance</p>
-<p>Highly trusted worldwide with strong customer reputation</p>
-<a href="https://www.rentalcover.com" target="_blank">Visit Website</a>
+<h3>RentalCover Protection Plan</h3>
+<p>Worldwide excess insurance cover. Simple claims process and high customer satisfaction.</p>
+<a href="https://www.rentalcover.com" target="_blank">View RentalCover</a>
 </div>
 
 <div class="ins-box">
-<h3>:contentReference[oaicite:1]{index=1}</h3>
-<p>UK specialist in car hire excess cover</p>
-<p>Known for fast claims and strong EU reputation</p>
-<a href="https://www.carhireexcess.co.uk/?variant=2" target="_blank">Visit Website</a>
+<h3>CarHireExcess Protection</h3>
+<p>UK-based excess insurance provider with strong EU reputation and fast refund process.</p>
+<a href="https://www.carhireexcess.co.uk/?variant=2" target="_blank">View CarHireExcess</a>
 </div>
 
-</section>
+<div class="ins-box">
+<h3>Insurance4CarHire</h3>
+<p>One of the oldest excess insurance companies in Europe with strong Google reviews reputation.</p>
+<a href="https://www.insurance4carhire.com" target="_blank">View Insurance4CarHire</a>
+</div>
+
+</div>
 
 <script>
 
@@ -274,66 +233,49 @@ function setPlan(p){
 plan = p;
 
 let start = 25;
+
 if(plan == 1) start = 4;
 if(plan == 2) start = 11;
 if(plan == 3) start = 25;
 
 prices = [];
 
-for(let i=0;i<6;i++){
+for(let i=0;i<4;i++){
 prices[i] = start + (i*5);
-}
-
-for(let i=0;i<6;i++){
-document.getElementById("c"+i).innerText =
-"€"+prices[i]+"/day";
+document.getElementById("c"+i).innerText = "€"+prices[i]+"/day";
 }
 }
 
 function calculate(){
 
 let car = document.getElementById("car").value;
-let start = new Date(document.getElementById("pickup").value);
-let end = new Date(document.getElementById("dropoff").value);
+let a = new Date(document.getElementById("pickup").value);
+let b = new Date(document.getElementById("dropoff").value);
 
-if(!document.getElementById("pickup").value || !document.getElementById("dropoff").value){
-document.getElementById("result").innerText = "Select pickup and drop-off dates";
-return;
-}
-
-let days = (end - start)/(1000*60*60*24);
+let days = (b - a)/(1000*60*60*24);
 
 if(days <= 0){
-document.getElementById("result").innerText = "Drop-off must be after pickup";
+document.getElementById("result").innerText = "Please select valid dates";
 return;
 }
 
-let price = prices[car];
-let total = price * days;
+let total = prices[car] * days;
 
-document.getElementById("result").innerHTML =
-"Days: "+days+"<br>"+
-"Price/day: €"+price+"<br>"+
-"Total: €"+total.toFixed(2);
+document.getElementById("result").innerText =
+"Total Price: €"+total.toFixed(2);
 }
 
-function sendWhatsApp(){
+function whatsapp(){
 
-let car = document.getElementById("car").options[document.getElementById("car").selectedIndex].text;
 let name = document.getElementById("name").value;
-let pickup = document.getElementById("pickup").value;
-let dropoff = document.getElementById("dropoff").value;
-let summary = document.getElementById("result").innerText;
+let car = document.getElementById("car").options[document.getElementById("car").selectedIndex].text;
+let msg = "Name: "+name+" Car: "+car;
 
-let msg =
-"Hello Quick Rental%0A%0A"+
-"Name: "+name+"%0A"+
-"Car: "+car+"%0A"+
-"Pickup: "+pickup+"%0A"+
-"Dropoff: "+dropoff+"%0A%0A"+
-summary;
+window.open("https://wa.me/35677038260?text="+msg);
+}
 
-window.open("https://wa.me/35677038260?text="+msg,"_blank");
+function scrollInsurance(){
+document.querySelector(".insurance").scrollIntoView({behavior:"smooth"});
 }
 
 </script>
