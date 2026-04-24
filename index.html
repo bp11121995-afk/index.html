@@ -11,7 +11,7 @@ font-family:Arial;
 color:#fff;
 }
 
-/* 🎥 VIDEO BACKGROUND */
+/* VIDEO BACKGROUND */
 #bgVideo{
 position:fixed;
 top:0;
@@ -70,10 +70,9 @@ font-weight:bold;
 cursor:pointer;
 }
 
-.plan-info{
-color:#aaa;
-font-size:13px;
-margin-top:5px;
+.plan-price{
+color:var(--gold);
+font-weight:bold;
 }
 
 /* CARS */
@@ -176,7 +175,7 @@ font-size:13px;
 
 <body>
 
-<!-- 🎥 VIDEO -->
+<!-- VIDEO -->
 <video autoplay muted loop playsinline id="bgVideo">
 <source src="https://cdn.coverr.co/videos/coverr-driving-through-a-tunnel-1578/1080p.mp4" type="video/mp4">
 </video>
@@ -192,25 +191,22 @@ font-size:13px;
 <div class="plans">
 
 <div class="plan">
-<h3>Option 1</h3>
+<h3>Option 1 <span class="plan-price" id="p1">€4/day</span></h3>
 <p>Deposit €1200 / Excess €1200</p>
-<div class="plan-info">Starts €4/day + €5 per car step</div>
 <button onclick="setPlan(1)">Select Plan</button>
 <button onclick="scrollInsurance()">Cover</button>
 </div>
 
 <div class="plan">
-<h3>Option 2</h3>
+<h3>Option 2 <span class="plan-price" id="p2">€11/day</span></h3>
 <p>Deposit €600 / Excess €600</p>
-<div class="plan-info">Starts €11/day + €5 per car step</div>
 <button onclick="setPlan(2)">Select Plan</button>
 <button onclick="scrollInsurance()">Cover</button>
 </div>
 
 <div class="plan">
-<h3>Option 3</h3>
+<h3>Option 3 <span class="plan-price" id="p3">€25/day</span></h3>
 <p>Deposit €300 / Excess €300</p>
-<div class="plan-info">Starts €25/day + €5 per car step</div>
 <button onclick="setPlan(3)">Select Plan</button>
 <button onclick="scrollInsurance()">Cover</button>
 </div>
@@ -261,7 +257,7 @@ font-size:13px;
 
 <h2 style="color:#d4af37;">Recommended Full Cover Insurance</h2>
 
-<p style="color:#aaa;">We recommend full cover before driving</p>
+<p style="color:#aaa;">We recommend full cover before starting your rental</p>
 
 <div class="ins-box">
 <h3>RentalCover</h3>
@@ -290,7 +286,7 @@ font-size:13px;
 let plan=1;
 let prices=[];
 
-/* SET PRICES */
+/* PLAN SYSTEM */
 function setPlan(p){
 plan=p;
 
@@ -299,15 +295,20 @@ if(plan==1) start=4;
 if(plan==2) start=11;
 if(plan==3) start=25;
 
+/* update cars */
 prices=[];
-
 for(let i=0;i<4;i++){
 prices[i]=Number(start)+(i*5);
 document.getElementById("c"+i).innerText="€"+prices[i]+"/day";
 }
+
+/* update plan labels */
+document.getElementById("p1").innerText="€"+(plan==1?4:4)+"/day";
+document.getElementById("p2").innerText="€"+(plan==2?11:11)+"/day";
+document.getElementById("p3").innerText="€"+(plan==3?25:25)+"/day";
 }
 
-/* CALC */
+/* CALCULATOR */
 function calc(){
 
 let car=parseInt(document.getElementById("car").value);
