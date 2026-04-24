@@ -59,21 +59,14 @@ font-size:14px;
 margin-top:5px;
 }
 
-.buttons{
-display:flex;
-gap:10px;
-justify-content:center;
-margin-top:12px;
-flex-wrap:wrap;
-}
-
-.buttons button{
+.plan button{
+margin-top:10px;
 padding:10px;
+width:60%;
 background:var(--gold);
 border:none;
 font-weight:bold;
 cursor:pointer;
-width:45%;
 }
 
 /* CARS */
@@ -108,17 +101,22 @@ padding:30px;
 border-radius:15px;
 }
 
+label{
+font-size:13px;
+color:#aaa;
+}
+
 input,select{
 width:100%;
 padding:12px;
-margin:8px 0;
+margin:6px 0 12px;
 background:#111;
 border:1px solid #222;
 color:white;
 border-radius:8px;
 }
 
-button.main{
+button{
 width:100%;
 padding:12px;
 background:var(--gold);
@@ -128,23 +126,18 @@ cursor:pointer;
 margin-top:10px;
 }
 
+.result{
+margin-top:15px;
+text-align:center;
+line-height:1.8;
+}
+
 /* INSURANCE */
 .insurance{
 max-width:900px;
 margin:80px auto;
 padding:20px;
 text-align:center;
-}
-
-.insurance h2{
-color:var(--gold);
-margin-bottom:10px;
-}
-
-.note{
-color:#aaa;
-font-size:13px;
-margin-bottom:20px;
 }
 
 .ins-box{
@@ -158,7 +151,6 @@ text-align:left;
 
 .ins-box h3{
 color:var(--gold);
-margin-bottom:5px;
 }
 
 .ins-box p{
@@ -184,7 +176,7 @@ border-radius:6px;
 
 <header>
 <h1>QUICK RENTAL MALTA</h1>
-<p>Book your car → then choose protection if needed</p>
+<p>Book your car in seconds</p>
 </header>
 
 <!-- PLANS -->
@@ -193,31 +185,19 @@ border-radius:6px;
 <div class="plan">
 <h3>🟢 Option 1</h3>
 <p>Deposit €1200 / Excess €1200</p>
-<p class="note">Best protection recommended for high-end security</p>
-<div class="buttons">
 <button onclick="setPlan(1)">Select Plan</button>
-<button onclick="goInsurance()">Get Insurance</button>
-</div>
 </div>
 
 <div class="plan">
 <h3>🟡 Option 2</h3>
 <p>Deposit €600 / Excess €600</p>
-<p class="note">Balanced protection for most customers</p>
-<div class="buttons">
 <button onclick="setPlan(2)">Select Plan</button>
-<button onclick="goInsurance()">Get Insurance</button>
-</div>
 </div>
 
 <div class="plan">
 <h3>🔴 Option 3</h3>
 <p>Deposit €300 / Excess €300</p>
-<p class="note">Low upfront cost option</p>
-<div class="buttons">
 <button onclick="setPlan(3)">Select Plan</button>
-<button onclick="goInsurance()">Get Insurance</button>
-</div>
 </div>
 
 </section>
@@ -237,43 +217,49 @@ border-radius:6px;
 <!-- BOOKING -->
 <section class="booking">
 
-<h2>BOOK NOW</h2>
+<h2>BOOK YOUR CAR</h2>
 
-<input placeholder="Your Name">
-<input type="date">
-<input type="date">
+<input id="name" placeholder="Full Name">
 
-<select>
-<option>Toyota Aygo</option>
-<option>Toyota Yaris</option>
-<option>VW Polo</option>
-<option>Nissan Qashqai</option>
+<label>Pick-up Date</label>
+<input type="date" id="pickup">
+
+<label>Drop-off Date</label>
+<input type="date" id="dropoff">
+
+<select id="car">
+<option value="0">Toyota Aygo</option>
+<option value="1">Toyota Yaris</option>
+<option value="2">VW Polo</option>
+<option value="3">Nissan Qashqai</option>
+<option value="4">Peugeot 5008</option>
+<option value="5">BMW 3 Series</option>
 </select>
 
-<button class="main">Send Booking via WhatsApp</button>
+<button onclick="calculate()">Calculate Price</button>
+
+<div class="result" id="result"></div>
+
+<button onclick="sendWhatsApp()">Book via WhatsApp</button>
 
 </section>
 
 <!-- INSURANCE -->
-<section id="insurance" class="insurance">
+<section class="insurance">
 
-<h2>🛡️ Trusted Excess Insurance Partners</h2>
-
-<p class="note">
-Important: First book your car, then choose a protection package
-</p>
+<h2>🛡️ Trusted Insurance Partners</h2>
 
 <div class="ins-box">
-<h3>:contentReference[oaicite:2]{index=2}</h3>
-<p>Global leader in excess refund insurance</p>
-<p>Highly trusted worldwide with strong customer reputation and fast claims process</p>
+<h3>:contentReference[oaicite:0]{index=0}</h3>
+<p>Global leader in rental excess insurance</p>
+<p>Highly trusted worldwide with strong customer reputation</p>
 <a href="https://www.rentalcover.com" target="_blank">Visit Website</a>
 </div>
 
 <div class="ins-box">
-<h3>:contentReference[oaicite:3]{index=3}</h3>
-<p>UK specialist in car hire excess insurance</p>
-<p>Well known for reliable service and strong UK/EU reputation</p>
+<h3>:contentReference[oaicite:1]{index=1}</h3>
+<p>UK specialist in car hire excess cover</p>
+<p>Known for fast claims and strong EU reputation</p>
 <a href="https://www.carhireexcess.co.uk/?variant=2" target="_blank">Visit Website</a>
 </div>
 
@@ -288,7 +274,6 @@ function setPlan(p){
 plan = p;
 
 let start = 25;
-
 if(plan == 1) start = 4;
 if(plan == 2) start = 11;
 if(plan == 3) start = 25;
@@ -305,8 +290,50 @@ document.getElementById("c"+i).innerText =
 }
 }
 
-function goInsurance(){
-document.getElementById("insurance").scrollIntoView({behavior:"smooth"});
+function calculate(){
+
+let car = document.getElementById("car").value;
+let start = new Date(document.getElementById("pickup").value);
+let end = new Date(document.getElementById("dropoff").value);
+
+if(!document.getElementById("pickup").value || !document.getElementById("dropoff").value){
+document.getElementById("result").innerText = "Select pickup and drop-off dates";
+return;
+}
+
+let days = (end - start)/(1000*60*60*24);
+
+if(days <= 0){
+document.getElementById("result").innerText = "Drop-off must be after pickup";
+return;
+}
+
+let price = prices[car];
+let total = price * days;
+
+document.getElementById("result").innerHTML =
+"Days: "+days+"<br>"+
+"Price/day: €"+price+"<br>"+
+"Total: €"+total.toFixed(2);
+}
+
+function sendWhatsApp(){
+
+let car = document.getElementById("car").options[document.getElementById("car").selectedIndex].text;
+let name = document.getElementById("name").value;
+let pickup = document.getElementById("pickup").value;
+let dropoff = document.getElementById("dropoff").value;
+let summary = document.getElementById("result").innerText;
+
+let msg =
+"Hello Quick Rental%0A%0A"+
+"Name: "+name+"%0A"+
+"Car: "+car+"%0A"+
+"Pickup: "+pickup+"%0A"+
+"Dropoff: "+dropoff+"%0A%0A"+
+summary;
+
+window.open("https://wa.me/35677038260?text="+msg,"_blank");
 }
 
 </script>
