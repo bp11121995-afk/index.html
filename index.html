@@ -70,9 +70,19 @@ font-weight:bold;
 cursor:pointer;
 }
 
+/* BIG PRICE */
 .plan-price{
 color:var(--gold);
 font-weight:bold;
+font-size:26px;
+display:block;
+margin-top:5px;
+}
+
+.plan-info{
+color:#aaa;
+font-size:13px;
+margin-top:5px;
 }
 
 /* CARS */
@@ -97,6 +107,8 @@ backdrop-filter: blur(6px);
 .price{
 color:var(--gold);
 margin-top:8px;
+font-size:18px;
+font-weight:bold;
 }
 
 /* BOOKING */
@@ -175,7 +187,7 @@ font-size:13px;
 
 <body>
 
-<!-- VIDEO -->
+<!-- VIDEO BACKGROUND -->
 <video autoplay muted loop playsinline id="bgVideo">
 <source src="https://cdn.coverr.co/videos/coverr-driving-through-a-tunnel-1578/1080p.mp4" type="video/mp4">
 </video>
@@ -193,6 +205,7 @@ font-size:13px;
 <div class="plan">
 <h3>Option 1 <span class="plan-price" id="p1">€4/day</span></h3>
 <p>Deposit €1200 / Excess €1200</p>
+<div class="plan-info">Base daily rental price depends on selected option</div>
 <button onclick="setPlan(1)">Select Plan</button>
 <button onclick="scrollInsurance()">Cover</button>
 </div>
@@ -200,6 +213,7 @@ font-size:13px;
 <div class="plan">
 <h3>Option 2 <span class="plan-price" id="p2">€11/day</span></h3>
 <p>Deposit €600 / Excess €600</p>
+<div class="plan-info">Base daily rental price depends on selected option</div>
 <button onclick="setPlan(2)">Select Plan</button>
 <button onclick="scrollInsurance()">Cover</button>
 </div>
@@ -207,6 +221,7 @@ font-size:13px;
 <div class="plan">
 <h3>Option 3 <span class="plan-price" id="p3">€25/day</span></h3>
 <p>Deposit €300 / Excess €300</p>
+<div class="plan-info">Base daily rental price depends on selected option</div>
 <button onclick="setPlan(3)">Select Plan</button>
 <button onclick="scrollInsurance()">Cover</button>
 </div>
@@ -216,10 +231,10 @@ font-size:13px;
 <!-- CARS -->
 <div class="cars">
 
-<div class="car">Aygo <div class="price" id="c0">€25</div></div>
-<div class="car">Yaris <div class="price" id="c1">€30</div></div>
-<div class="car">Polo <div class="price" id="c2">€35</div></div>
-<div class="car">Qashqai <div class="price" id="c3">€45</div></div>
+<div class="car">Aygo <div class="price" id="c0">€25/day</div></div>
+<div class="car">Yaris <div class="price" id="c1">€30/day</div></div>
+<div class="car">Polo <div class="price" id="c2">€35/day</div></div>
+<div class="car">Qashqai <div class="price" id="c3">€45/day</div></div>
 
 </div>
 
@@ -286,7 +301,7 @@ font-size:13px;
 let plan=1;
 let prices=[];
 
-/* PLAN SYSTEM */
+/* SET PLAN */
 function setPlan(p){
 plan=p;
 
@@ -295,20 +310,20 @@ if(plan==1) start=4;
 if(plan==2) start=11;
 if(plan==3) start=25;
 
-/* update cars */
 prices=[];
+
 for(let i=0;i<4;i++){
-prices[i]=Number(start)+(i*5);
+prices[i]=Number(start);
 document.getElementById("c"+i).innerText="€"+prices[i]+"/day";
 }
 
 /* update plan labels */
-document.getElementById("p1").innerText="€"+(plan==1?4:4)+"/day";
-document.getElementById("p2").innerText="€"+(plan==2?11:11)+"/day";
-document.getElementById("p3").innerText="€"+(plan==3?25:25)+"/day";
+document.getElementById("p1").innerText="€4/day";
+document.getElementById("p2").innerText="€11/day";
+document.getElementById("p3").innerText="€25/day";
 }
 
-/* CALCULATOR */
+/* CALCULATE */
 function calc(){
 
 let car=parseInt(document.getElementById("car").value);
