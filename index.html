@@ -8,12 +8,33 @@
 body{
 margin:0;
 font-family:Arial;
-background:#000;
 color:#fff;
+}
+
+/* 🎥 VIDEO BACKGROUND */
+#bgVideo{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
+}
+
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.75);
+z-index:-1;
 }
 
 :root{ --gold:#d4af37; }
 
+/* HEADER */
 header{
 text-align:center;
 padding:30px;
@@ -30,12 +51,13 @@ padding:20px;
 }
 
 .plan{
-background:#111;
+background:rgba(17,17,17,0.9);
 margin:10px 0;
 padding:15px;
 border:1px solid #222;
 border-radius:10px;
 text-align:center;
+backdrop-filter: blur(6px);
 }
 
 .plan button{
@@ -46,6 +68,12 @@ margin:5px;
 width:45%;
 font-weight:bold;
 cursor:pointer;
+}
+
+.plan-info{
+color:#aaa;
+font-size:13px;
+margin-top:5px;
 }
 
 /* CARS */
@@ -59,11 +87,12 @@ padding:0 15px;
 }
 
 .car{
-background:#111;
+background:rgba(17,17,17,0.9);
 padding:15px;
 border-radius:10px;
 text-align:center;
 border:1px solid #222;
+backdrop-filter: blur(6px);
 }
 
 .price{
@@ -76,8 +105,9 @@ margin-top:8px;
 max-width:650px;
 margin:40px auto;
 padding:20px;
-background:#111;
+background:rgba(17,17,17,0.9);
 border-radius:10px;
+backdrop-filter: blur(6px);
 }
 
 input,select{
@@ -106,12 +136,13 @@ text-align:center;
 }
 
 .ins-box{
-background:#111;
+background:rgba(17,17,17,0.9);
 border:1px solid #222;
 padding:15px;
 border-radius:10px;
 margin:10px 0;
 text-align:left;
+backdrop-filter: blur(6px);
 }
 
 .ins-box h3{
@@ -145,6 +176,13 @@ font-size:13px;
 
 <body>
 
+<!-- 🎥 VIDEO -->
+<video autoplay muted loop playsinline id="bgVideo">
+<source src="https://cdn.coverr.co/videos/coverr-driving-through-a-tunnel-1578/1080p.mp4" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
 <header>
 <h1>QUICK RENTAL MALTA</h1>
 <p>Book car first → then choose cover</p>
@@ -156,6 +194,7 @@ font-size:13px;
 <div class="plan">
 <h3>Option 1</h3>
 <p>Deposit €1200 / Excess €1200</p>
+<div class="plan-info">Starts €4/day + €5 per car step</div>
 <button onclick="setPlan(1)">Select Plan</button>
 <button onclick="scrollInsurance()">Cover</button>
 </div>
@@ -163,6 +202,7 @@ font-size:13px;
 <div class="plan">
 <h3>Option 2</h3>
 <p>Deposit €600 / Excess €600</p>
+<div class="plan-info">Starts €11/day + €5 per car step</div>
 <button onclick="setPlan(2)">Select Plan</button>
 <button onclick="scrollInsurance()">Cover</button>
 </div>
@@ -170,6 +210,7 @@ font-size:13px;
 <div class="plan">
 <h3>Option 3</h3>
 <p>Deposit €300 / Excess €300</p>
+<div class="plan-info">Starts €25/day + €5 per car step</div>
 <button onclick="setPlan(3)">Select Plan</button>
 <button onclick="scrollInsurance()">Cover</button>
 </div>
@@ -197,8 +238,8 @@ font-size:13px;
 <label>Drop-off Date</label>
 <input type="date" id="dropoff">
 
-<label>Delivery Location (Hotel / Airport / Address)</label>
-<input type="text" id="delivery" placeholder="e.g. Hilton Malta / Airport">
+<label>Delivery Location</label>
+<input type="text" id="delivery" placeholder="Hotel / Airport / Address">
 
 <select id="car">
 <option value="0">Aygo</option>
@@ -220,7 +261,7 @@ font-size:13px;
 
 <h2 style="color:#d4af37;">Recommended Full Cover Insurance</h2>
 
-<p style="color:#aaa;">We recommend full cover before starting your rental</p>
+<p style="color:#aaa;">We recommend full cover before driving</p>
 
 <div class="ins-box">
 <h3>RentalCover</h3>
@@ -249,7 +290,7 @@ font-size:13px;
 let plan=1;
 let prices=[];
 
-/* SET PLAN PRICES */
+/* SET PRICES */
 function setPlan(p){
 plan=p;
 
@@ -266,7 +307,7 @@ document.getElementById("c"+i).innerText="€"+prices[i]+"/day";
 }
 }
 
-/* CALCULATOR */
+/* CALC */
 function calc(){
 
 let car=parseInt(document.getElementById("car").value);
@@ -290,7 +331,7 @@ document.getElementById("result").innerHTML =
 "Price/day: €"+prices[car]+"<br>"+
 "Delivery: "+delivery+"<br><br>"+
 "<b>Total: €"+total.toFixed(2)+"</b><br><br>"+
-"<span style='color:#aaa'>First book car, then choose insurance cover</span>";
+"<span style='color:#aaa'>Book car first → then choose insurance cover</span>";
 }
 
 /* WHATSAPP */
@@ -312,13 +353,13 @@ let msg=
 window.open("https://wa.me/35677038260?text="+msg);
 }
 
-/* SCROLL INSURANCE */
+/* SCROLL */
 function scrollInsurance(){
 document.getElementById("insurance").scrollIntoView({behavior:"smooth"});
 }
 
-/* AUTO LOAD OPTION 1 */
-window.onload = function(){
+/* AUTO OPTION 1 */
+window.onload=function(){
 setPlan(1);
 };
 
