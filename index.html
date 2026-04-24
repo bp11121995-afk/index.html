@@ -11,7 +11,6 @@ font-family:Arial;
 color:#fff;
 }
 
-/* VIDEO BACKGROUND */
 #bgVideo{
 position:fixed;
 top:0;
@@ -34,55 +33,21 @@ z-index:-1;
 
 :root{ --gold:#d4af37; }
 
-/* HEADER */
 header{
 text-align:center;
-padding:30px;
+padding:20px;
 border-bottom:1px solid #222;
 }
 
 h1{color:var(--gold);}
 
-/* PLANS */
-.plans{
-max-width:800px;
-margin:auto;
-padding:20px;
-}
-
-.plan{
-background:rgba(17,17,17,0.9);
-margin:10px 0;
-padding:15px;
-border:1px solid #222;
-border-radius:10px;
+/* INFO LINE */
+.info-line{
 text-align:center;
-backdrop-filter: blur(6px);
-}
-
-.plan button{
-background:var(--gold);
-border:none;
-padding:10px;
-margin:5px;
-width:45%;
-font-weight:bold;
-cursor:pointer;
-}
-
-/* BIG PRICE */
-.plan-price{
-color:var(--gold);
-font-weight:bold;
-font-size:26px;
-display:block;
-margin-top:5px;
-}
-
-.plan-info{
 color:#aaa;
-font-size:13px;
-margin-top:5px;
+font-size:14px;
+margin-top:-10px;
+padding:0 15px;
 }
 
 /* CARS */
@@ -101,14 +66,13 @@ padding:15px;
 border-radius:10px;
 text-align:center;
 border:1px solid #222;
-backdrop-filter: blur(6px);
 }
 
 .price{
 color:var(--gold);
-margin-top:8px;
-font-size:18px;
 font-weight:bold;
+font-size:18px;
+margin-top:8px;
 }
 
 /* BOOKING */
@@ -118,7 +82,29 @@ margin:40px auto;
 padding:20px;
 background:rgba(17,17,17,0.9);
 border-radius:10px;
-backdrop-filter: blur(6px);
+}
+
+.plan-buttons{
+display:flex;
+gap:10px;
+margin-bottom:15px;
+}
+
+.plan-btn{
+flex:1;
+padding:12px;
+border:none;
+cursor:pointer;
+background:#111;
+color:#fff;
+border:1px solid #333;
+border-radius:8px;
+font-weight:bold;
+}
+
+.plan-btn.active{
+background:var(--gold);
+color:#000;
 }
 
 input,select{
@@ -132,55 +118,20 @@ border-radius:6px;
 font-size:16px;
 }
 
+button{
+background:var(--gold);
+border:none;
+padding:12px;
+width:100%;
+font-weight:bold;
+cursor:pointer;
+margin-top:10px;
+}
+
 .result{
 margin-top:10px;
 color:var(--gold);
 line-height:1.6;
-}
-
-/* INSURANCE */
-.insurance{
-max-width:850px;
-margin:60px auto;
-padding:20px;
-text-align:center;
-}
-
-.ins-box{
-background:rgba(17,17,17,0.9);
-border:1px solid #222;
-padding:15px;
-border-radius:10px;
-margin:10px 0;
-text-align:left;
-backdrop-filter: blur(6px);
-}
-
-.ins-box h3{
-color:var(--gold);
-margin-bottom:5px;
-}
-
-.ins-box p{
-color:#ccc;
-font-size:13px;
-}
-
-.ins-actions{
-margin-top:10px;
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-}
-
-.ins-actions a{
-padding:8px 12px;
-background:var(--gold);
-color:#000;
-text-decoration:none;
-font-weight:bold;
-border-radius:6px;
-font-size:13px;
 }
 </style>
 </head>
@@ -196,37 +147,12 @@ font-size:13px;
 
 <header>
 <h1>QUICK RENTAL MALTA</h1>
-<p>Book car first → then choose cover</p>
 </header>
 
-<!-- PLANS -->
-<div class="plans">
-
-<div class="plan">
-<h3>Option 1 <span class="plan-price" id="p1">€4/day</span></h3>
-<p>Deposit €1200 / Excess €1200</p>
-<div class="plan-info">Base daily rental price depends on selected option</div>
-<button onclick="setPlan(1)">Select Plan</button>
-<button onclick="scrollInsurance()">Cover</button>
-</div>
-
-<div class="plan">
-<h3>Option 2 <span class="plan-price" id="p2">€11/day</span></h3>
-<p>Deposit €600 / Excess €600</p>
-<div class="plan-info">Base daily rental price depends on selected option</div>
-<button onclick="setPlan(2)">Select Plan</button>
-<button onclick="scrollInsurance()">Cover</button>
-</div>
-
-<div class="plan">
-<h3>Option 3 <span class="plan-price" id="p3">€25/day</span></h3>
-<p>Deposit €300 / Excess €300</p>
-<div class="plan-info">Base daily rental price depends on selected option</div>
-<button onclick="setPlan(3)">Select Plan</button>
-<button onclick="scrollInsurance()">Cover</button>
-</div>
-
-</div>
+<!-- 🔥 NEW INFO LINE -->
+<p class="info-line">
+🚗 Delivery across Malta & Gozo • Hassle-free rental experience • We bring the car to your location
+</p>
 
 <!-- CARS -->
 <div class="cars">
@@ -241,6 +167,13 @@ font-size:13px;
 <!-- BOOKING -->
 <div class="booking">
 
+<!-- PLAN BUTTONS -->
+<div class="plan-buttons">
+<button class="plan-btn" id="pbtn1" onclick="setPlan(1)">Option 1</button>
+<button class="plan-btn" id="pbtn2" onclick="setPlan(2)">Option 2</button>
+<button class="plan-btn" id="pbtn3" onclick="setPlan(3)">Option 3</button>
+</div>
+
 <input id="name" placeholder="Full Name">
 
 <label>Pick-up Date</label>
@@ -249,8 +182,7 @@ font-size:13px;
 <label>Drop-off Date</label>
 <input type="date" id="dropoff">
 
-<label>Delivery Location</label>
-<input type="text" id="delivery" placeholder="Hotel / Airport / Address">
+<input id="delivery" placeholder="Hotel / Airport / Address">
 
 <select id="car">
 <option value="0">Aygo</option>
@@ -267,64 +199,41 @@ font-size:13px;
 
 </div>
 
-<!-- INSURANCE -->
-<div class="insurance" id="insurance">
-
-<h2 style="color:#d4af37;">Recommended Full Cover Insurance</h2>
-
-<p style="color:#aaa;">We recommend full cover before starting your rental</p>
-
-<div class="ins-box">
-<h3>RentalCover</h3>
-<p>Global leader in rental excess insurance</p>
-
-<div class="ins-actions">
-<a href="https://www.rentalcover.com" target="_blank">Visit Site</a>
-<a href="https://www.trustpilot.com/review/rentalcover.com" target="_blank">View Reviews</a>
-</div>
-</div>
-
-<div class="ins-box">
-<h3>CarHireExcess</h3>
-<p>UK-based trusted insurance provider</p>
-
-<div class="ins-actions">
-<a href="https://www.carhireexcess.co.uk/?variant=2" target="_blank">Visit Site</a>
-<a href="https://www.trustpilot.com/review/carhireexcess.co.uk" target="_blank">View Reviews</a>
-</div>
-</div>
-
-</div>
-
 <script>
 
-let plan=1;
+let plan=null;
 let prices=[];
 
-/* SET PLAN */
+/* PLAN */
 function setPlan(p){
 plan=p;
 
+document.getElementById("pbtn1").classList.remove("active");
+document.getElementById("pbtn2").classList.remove("active");
+document.getElementById("pbtn3").classList.remove("active");
+
+if(p==1) document.getElementById("pbtn1").classList.add("active");
+if(p==2) document.getElementById("pbtn2").classList.add("active");
+if(p==3) document.getElementById("pbtn3").classList.add("active");
+
 let start=4;
-if(plan==1) start=4;
-if(plan==2) start=11;
-if(plan==3) start=25;
+if(p==2) start=11;
+if(p==3) start=25;
 
 prices=[];
-
 for(let i=0;i<4;i++){
-prices[i]=Number(start);
+prices[i]=start;
 document.getElementById("c"+i).innerText="€"+prices[i]+"/day";
 }
-
-/* update plan labels */
-document.getElementById("p1").innerText="€4/day";
-document.getElementById("p2").innerText="€11/day";
-document.getElementById("p3").innerText="€25/day";
 }
 
-/* CALCULATE */
+/* CALC */
 function calc(){
+
+if(!plan){
+alert("Please select a plan first");
+return;
+}
 
 let car=parseInt(document.getElementById("car").value);
 
@@ -334,24 +243,29 @@ let b=new Date(document.getElementById("dropoff").value);
 let days=(b-a)/(1000*60*60*24);
 
 if(!days || days<=0){
-document.getElementById("result").innerText="Please select valid dates";
+document.getElementById("result").innerText="Select valid dates";
 return;
 }
 
-let total = Number(prices[car]) * Number(days);
+let total = prices[car] * days;
 
 let delivery=document.getElementById("delivery").value;
 
 document.getElementById("result").innerHTML =
+"Plan: Option "+plan+"<br>"+
 "Days: "+days+"<br>"+
 "Price/day: €"+prices[car]+"<br>"+
 "Delivery: "+delivery+"<br><br>"+
-"<b>Total: €"+total.toFixed(2)+"</b><br><br>"+
-"<span style='color:#aaa'>Book car first → then choose insurance cover</span>";
+"<b>Total: €"+total.toFixed(2)+"</b>";
 }
 
 /* WHATSAPP */
 function whatsapp(){
+
+if(!plan){
+alert("Select a plan first");
+return;
+}
 
 let name=document.getElementById("name").value;
 let car=document.getElementById("car").options[document.getElementById("car").selectedIndex].text;
@@ -360,7 +274,8 @@ let dropoff=document.getElementById("dropoff").value;
 let delivery=document.getElementById("delivery").value;
 
 let msg=
-"Name: "+name+
+"Plan: Option "+plan+
+"%0AName: "+name+
 "%0ACar: "+car+
 "%0APickup: "+pickup+
 "%0ADropoff: "+dropoff+
@@ -369,12 +284,7 @@ let msg=
 window.open("https://wa.me/35677038260?text="+msg);
 }
 
-/* SCROLL */
-function scrollInsurance(){
-document.getElementById("insurance").scrollIntoView({behavior:"smooth"});
-}
-
-/* AUTO OPTION 1 */
+/* DEFAULT */
 window.onload=function(){
 setPlan(1);
 };
