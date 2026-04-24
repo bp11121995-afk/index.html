@@ -35,6 +35,11 @@ color:var(--gold);
 letter-spacing:3px;
 }
 
+header p{
+color:#aaa;
+margin-top:10px;
+}
+
 /* PLANS */
 .plans{
 max-width:900px;
@@ -120,6 +125,69 @@ text-align:center;
 line-height:1.8;
 }
 
+/* INSURANCE */
+.insurance{
+max-width:1000px;
+margin:80px auto;
+padding:20px;
+text-align:center;
+}
+
+.insurance h2{
+color:var(--gold);
+margin-bottom:10px;
+font-size:28px;
+}
+
+.subtext{
+color:#aaa;
+font-size:14px;
+margin-bottom:25px;
+}
+
+.insurance-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
+}
+
+.insurance-box{
+background:#0a0a0a;
+border:1px solid #222;
+padding:20px;
+border-radius:12px;
+transition:0.3s;
+text-align:left;
+}
+
+.insurance-box:hover{
+transform:translateY(-5px);
+border-color:var(--gold);
+}
+
+.insurance-box h3{
+color:var(--gold);
+margin-bottom:10px;
+font-size:18px;
+}
+
+.insurance-box p{
+color:#bbb;
+font-size:13px;
+margin:6px 0;
+}
+
+.insurance-box a{
+display:inline-block;
+margin-top:10px;
+color:black;
+background:var(--gold);
+padding:8px 12px;
+text-decoration:none;
+font-weight:bold;
+border-radius:6px;
+}
+
 </style>
 </head>
 
@@ -135,19 +203,19 @@ line-height:1.8;
 
 <div class="plan">
 <h3>🟢 Option 1</h3>
-<p>Starts €4/day (+€5 per car step)</p>
+<p>€4 start price system</p>
 <button onclick="setPlan(1)">Select Plan</button>
 </div>
 
 <div class="plan">
 <h3>🟡 Option 2</h3>
-<p>Starts €11/day (+€5 per car step)</p>
+<p>€11 start price system</p>
 <button onclick="setPlan(2)">Select Plan</button>
 </div>
 
 <div class="plan">
 <h3>🔴 Option 3</h3>
-<p>Starts €25/day (+€5 per car step)</p>
+<p>€25 start price system</p>
 <button onclick="setPlan(3)">Select Plan</button>
 </div>
 
@@ -156,35 +224,12 @@ line-height:1.8;
 <!-- CARS -->
 <section class="fleet">
 
-<div class="car-card">
-<h3>Toyota Aygo</h3>
-<div class="price" id="c0">€25/day</div>
-</div>
-
-<div class="car-card">
-<h3>Toyota Yaris</h3>
-<div class="price" id="c1">€30/day</div>
-</div>
-
-<div class="car-card">
-<h3>VW Polo</h3>
-<div class="price" id="c2">€35/day</div>
-</div>
-
-<div class="car-card">
-<h3>Nissan Qashqai</h3>
-<div class="price" id="c3">€45/day</div>
-</div>
-
-<div class="car-card">
-<h3>Peugeot 5008</h3>
-<div class="price" id="c4">€55/day</div>
-</div>
-
-<div class="car-card">
-<h3>BMW 3 Series</h3>
-<div class="price" id="c5">€90/day</div>
-</div>
+<div class="car-card"><h3>Toyota Aygo</h3><div class="price" id="c0">€25/day</div></div>
+<div class="car-card"><h3>Toyota Yaris</h3><div class="price" id="c1">€30/day</div></div>
+<div class="car-card"><h3>VW Polo</h3><div class="price" id="c2">€35/day</div></div>
+<div class="car-card"><h3>Nissan Qashqai</h3><div class="price" id="c3">€45/day</div></div>
+<div class="car-card"><h3>Peugeot 5008</h3><div class="price" id="c4">€55/day</div></div>
+<div class="car-card"><h3>BMW 3 Series</h3><div class="price" id="c5">€90/day</div></div>
 
 </section>
 
@@ -210,9 +255,54 @@ line-height:1.8;
 
 <div class="result" id="result"></div>
 
-<br>
-
 <button onclick="sendWhatsApp()">Book via WhatsApp</button>
+
+</section>
+
+<!-- INSURANCE -->
+<section class="insurance">
+
+<h2>🛡️ Protect Your Excess</h2>
+
+<p class="subtext">
+Avoid high deposit deductions with trusted global insurance providers
+</p>
+
+<div class="insurance-grid">
+
+<div class="insurance-box">
+<h3>:contentReference[oaicite:0]{index=0}</h3>
+<p>€6–€15/day average</p>
+<p>Full excess refund cover</p>
+<p>Strong global reputation (4+ stars)</p>
+<a href="https://www.rentalcover.com" target="_blank">Visit Site</a>
+</div>
+
+<div class="insurance-box">
+<h3>:contentReference[oaicite:1]{index=1}</h3>
+<p>€5–€12/day average</p>
+<p>Car hire excess insurance</p>
+<p>Simple claims system</p>
+<a href="https://www.carexcess.com" target="_blank">Visit Site</a>
+</div>
+
+<div class="insurance-box">
+<h3>:contentReference[oaicite:2]{index=2}</h3>
+<p>€8–€20/day average</p>
+<p>Travel + car insurance options</p>
+<p>Very high global trust</p>
+<a href="https://www.axa.com" target="_blank">Visit Site</a>
+</div>
+
+<div class="insurance-box">
+<h3>:contentReference[oaicite:3]{index=3}</h3>
+<p>€7–€18/day average</p>
+<p>Rental + travel protection</p>
+<p>One of the largest insurers worldwide</p>
+<a href="https://www.allianz.com" target="_blank">Visit Site</a>
+</div>
+
+</div>
 
 </section>
 
@@ -221,45 +311,42 @@ line-height:1.8;
 let plan = 1;
 let currentPrices = [];
 
-// set plan pricing
+// PLAN SYSTEM
 function setPlan(p){
 plan = p;
 
 let startPrice = 25;
 
-// pricing rules
 if(plan == 1) startPrice = 4;
 if(plan == 2) startPrice = 11;
 if(plan == 3) startPrice = 25;
 
-// build prices
 currentPrices = [];
 
-for(let i = 0; i < 6; i++){
-currentPrices[i] = startPrice + (i * 5);
+for(let i=0;i<6;i++){
+currentPrices[i] = startPrice + (i*5);
 }
 
-// update UI
-for(let i = 0; i < 6; i++){
+for(let i=0;i<6;i++){
 document.getElementById("c"+i).innerText =
-"€" + currentPrices[i] + "/day";
+"€"+currentPrices[i]+"/day";
 }
 
 document.getElementById("result").innerHTML =
 "✅ Plan selected: Option " + plan;
 }
 
-// calculate booking
+// CALCULATE
 function calculate(){
 
 let car = document.getElementById("car").value;
 let start = new Date(document.getElementById("start").value);
 let end = new Date(document.getElementById("end").value);
 
-let days = (end - start) / (1000 * 60 * 60 * 24);
+let days = (end-start)/(1000*60*60*24);
 
-if(days <= 0){
-document.getElementById("result").innerText = "Select valid dates";
+if(days<=0){
+document.getElementById("result").innerText="Select valid dates";
 return;
 }
 
@@ -267,13 +354,13 @@ let price = currentPrices[car];
 let total = price * days;
 
 document.getElementById("result").innerHTML =
-"Plan: " + plan + "<br>" +
-"Days: " + days + "<br>" +
-"Price/day: €" + price + "<br>" +
-"Total: €" + total.toFixed(2);
+"Plan: "+plan+"<br>"+
+"Days: "+days+"<br>"+
+"Price/day: €"+price+"<br>"+
+"Total: €"+total.toFixed(2);
 }
 
-// whatsapp
+// WHATSAPP
 function sendWhatsApp(){
 
 let car = document.getElementById("car").options[document.getElementById("car").selectedIndex].text;
@@ -284,13 +371,13 @@ let summary = document.getElementById("result").innerText;
 
 let message =
 "Hello Quick Rental%0A%0A"+
-"Name: " + name + "%0A"+
-"Car: " + car + "%0A"+
-"Dates: " + start + " to " + end + "%0A"+
-"Plan: " + plan + "%0A%0A"+
+"Name: "+name+"%0A"+
+"Car: "+car+"%0A"+
+"Dates: "+start+" to "+end+"%0A"+
+"Plan: "+plan+"%0A%0A"+
 summary;
 
-window.open("https://wa.me/35677038260?text=" + message, "_blank");
+window.open("https://wa.me/35677038260?text="+message,"_blank");
 }
 
 </script>
