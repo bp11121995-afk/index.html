@@ -1,152 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EZ Car Rental</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f5f5f5;
-      color: #333;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Quick Car Rental</title>
 
-    header {
-      background: #111;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f5f5f5;
+  color: #333;
+}
 
-    nav {
-      background: #222;
-      padding: 10px;
-      text-align: center;
-    }
+header {
+  background: linear-gradient(90deg, #111, #333);
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
+}
 
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-    }
+.logo {
+  font-size: 32px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
 
-    section {
-      padding: 40px;
-      max-width: 1000px;
-      margin: auto;
-      background: white;
-      margin-top: 20px;
-      border-radius: 10px;
-    }
+.tagline {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #ddd;
+}
 
-    .car-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
+.location {
+  font-size: 13px;
+  color: #aaa;
+}
 
-    .car {
-      border: 1px solid #ddd;
-      padding: 15px;
-      border-radius: 10px;
-      text-align: center;
-    }
+nav {
+  background: #222;
+  text-align: center;
+  padding: 10px;
+}
 
-    .car h3 {
-      margin: 10px 0;
-    }
+nav a {
+  color: white;
+  margin: 0 12px;
+  text-decoration: none;
+}
 
-    button {
-      padding: 10px 15px;
-      border: none;
-      background: #000;
-      color: white;
-      cursor: pointer;
-      border-radius: 5px;
-    }
+section {
+  max-width: 1100px;
+  margin: 20px auto;
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+}
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #111;
-      color: white;
-      margin-top: 20px;
-    }
+.cars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
 
-    .terms ul {
-      line-height: 1.8;
-    }
-  </style>
+.car {
+  background: #fafafa;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.price {
+  font-size: 18px;
+  color: green;
+  font-weight: bold;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  background: black;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.why {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.box {
+  background: #f0f0f0;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+footer {
+  text-align: center;
+  background: #111;
+  color: white;
+  padding: 15px;
+  margin-top: 20px;
+}
+
+.whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  color: white;
+  padding: 15px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+}
+</style>
+
 </head>
+
 <body>
 
 <header>
-  <h1>EZ Car Rental</h1>
-  <p>Simple & Reliable Car Rental Service</p>
+  <div class="logo">Quick Car Rental</div>
+  <div class="tagline">Fast • Cheap • Reliable</div>
+  <div class="location">📍 Senglea / Birkirkara, Malta</div>
 </header>
 
 <nav>
-  <a href="#home">Home</a>
   <a href="#cars">Cars</a>
-  <a href="#terms">Terms</a>
-  <a href="#contact">Contact</a>
+  <a href="#why">Why Us</a>
+  <a href="#discover">Discover</a>
 </nav>
 
-<section id="home">
-  <h2>Welcome</h2>
-  <p>Rent cars easily and quickly with transparent pricing and no hidden fees.</p>
-</section>
-
 <section id="cars">
-  <h2>Available Cars</h2>
-  <div class="car-list">
+<h2>Our Cars & Prices</h2>
 
-    <div class="car">
-      <h3>Economy Car</h3>
-      <p>Fuel efficient and budget friendly.</p>
-      <button>Book Now</button>
-    </div>
+<div class="cars">
 
-    <div class="car">
-      <h3>Sedan</h3>
-      <p>Comfortable for city and long drives.</p>
-      <button>Book Now</button>
-    </div>
+<div class="car"><h3>Economy</h3><p class="price">€25/day</p><button>Book</button></div>
+<div class="car"><h3>Compact</h3><p class="price">€30/day</p><button>Book</button></div>
+<div class="car"><h3>Hatchback</h3><p class="price">€28/day</p><button>Book</button></div>
+<div class="car"><h3>Sedan</h3><p class="price">€40/day</p><button>Book</button></div>
+<div class="car"><h3>SUV</h3><p class="price">€60/day</p><button>Book</button></div>
+<div class="car"><h3>Luxury</h3><p class="price">€90/day</p><button>Book</button></div>
+<div class="car"><h3>Van</h3><p class="price">€70/day</p><button>Book</button></div>
+<div class="car"><h3>Convertible</h3><p class="price">€80/day</p><button>Book</button></div>
+<div class="car"><h3>Hybrid</h3><p class="price">€50/day</p><button>Book</button></div>
+<div class="car"><h3>4x4</h3><p class="price">€75/day</p><button>Book</button></div>
 
-    <div class="car">
-      <h3>SUV</h3>
-      <p>Spacious and powerful for family trips.</p>
-      <button>Book Now</button>
-    </div>
-
-  </div>
+</div>
 </section>
 
-<section id="terms" class="terms">
-  <h2>Terms & Conditions</h2>
-  <ul>
-    <li>Drivers must be at least 21 years old.</li>
-    <li>A valid driving license is required at pickup.</li>
-    <li>A security deposit may be required.</li>
-    <li>Vehicles must be returned with the same fuel level.</li>
-    <li>Late returns may incur additional charges.</li>
-    <li>Any damage to the vehicle will be charged to the renter.</li>
-    <li>Cancellation must be made at least 24 hours in advance.</li>
-  </ul>
+<section id="why">
+<h2>Why Us</h2>
+
+<div class="why">
+  <div class="box">✔ Fast booking in seconds</div>
+  <div class="box">✔ Cheap daily prices</div>
+  <div class="box">✔ No hidden fees</div>
+  <div class="box">✔ Clean & safe cars</div>
+  <div class="box">✔ 24/7 WhatsApp support</div>
+  <div class="box">✔ Easy pickup & drop-off</div>
+</div>
 </section>
 
-<section id="contact">
-  <h2>Contact Us</h2>
-  <p>Email: support@ezcarrental.com</p>
-  <p>Phone: +356 0000 0000</p>
+<section id="discover">
+<h2>Discover Malta</h2>
+<p>
+Explore beaches, historic cities, and hidden places freely.
+With Quick Car Rental you can travel anywhere in Malta at your own pace.
+</p>
 </section>
 
 <footer>
-  <p>&copy; 2026 EZ Car Rental. All rights reserved.</p>
+<p>&copy; 2026 Quick Car Rental Malta</p>
 </footer>
+
+<a class="whatsapp" href="https://wa.me/3560000000" target="_blank">
+WhatsApp
+</a>
 
 </body>
 </html>
-
