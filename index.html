@@ -41,11 +41,13 @@ header {
     padding:20px;
 }
 
+/* ===== LOGO ===== */
 .logo {
     font-weight:700;
-    font-size:20px;
+    font-size:22px;
 }
 
+/* ===== NAV ===== */
 nav a {
     margin-left:20px;
     text-decoration:none;
@@ -55,8 +57,14 @@ nav a {
 
 /* ===== HERO ===== */
 .hero {
+    background:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70') center/cover no-repeat;
+    position:relative;
+}
+
+.hero-overlay {
+    background:rgba(0,0,0,0.65);
+    padding:100px 20px;
     text-align:center;
-    padding:80px 20px;
 }
 
 .hero h1 {
@@ -115,7 +123,7 @@ ul {
     opacity:0.7;
 }
 
-/* ===== FLOAT ===== */
+/* ===== FLOAT BUTTON ===== */
 .whatsapp {
     position:fixed;
     bottom:20px;
@@ -133,7 +141,10 @@ ul {
 <body>
 
 <header>
-<div class="logo">Quick Rental</div>
+<div class="logo">
+🚗 <span style="color:#22c55e;">Quick</span> Rental Malta
+</div>
+
 <nav>
 <a href="#cars">Cars</a>
 <a href="#guide">Guide</a>
@@ -144,6 +155,8 @@ ul {
 
 <!-- HERO -->
 <div class="hero">
+<div class="hero-overlay">
+
 <h1>🚗 Car Rental Malta</h1>
 <p>Affordable • Fast • No Hidden Fees</p>
 <p>Airport Delivery ✈️ • Book in 2 Minutes</p>
@@ -151,6 +164,8 @@ ul {
 <a class="btn" href="https://wa.me/35677038260">
 Book on WhatsApp
 </a>
+
+</div>
 </div>
 
 <div class="container">
@@ -199,82 +214,35 @@ Book on WhatsApp
 <!-- GUIDE -->
 <div class="section" id="guide">
 <h2>📍 Malta Travel Guide</h2>
-
-<p>Malta is one of the best destinations in Europe to explore by car. Renting a vehicle gives you full freedom to discover hidden beaches, historical towns, and scenic coastal roads.</p>
-
-<p>Public transport can be slow during summer, so having your own car saves time and gives flexibility.</p>
-
+<p>Explore Malta freely by car. Discover hidden beaches, historic towns, and scenic roads.</p>
 </div>
 
 <!-- DRIVING -->
 <div class="section">
-<h2>🚦 Driving Tips in Malta</h2>
-
+<h2>🚦 Driving Tips</h2>
 <ul>
-<li>Drive on the left side</li>
-<li>Roads are narrow in old towns</li>
-<li>Watch for scooters and pedestrians</li>
-<li>Parking is limited in busy areas</li>
-<li>Small cars are easier to drive</li>
+<li>Drive on the left</li>
+<li>Roads can be narrow</li>
+<li>Watch for scooters</li>
+<li>Parking limited in cities</li>
 </ul>
-
-</div>
-
-<!-- PLACES -->
-<div class="section">
-<h2>🏝 Best Places to Visit</h2>
-
-<div class="grid">
-<div class="card">Blue Lagoon</div>
-<div class="card">Mdina Old City</div>
-<div class="card">Dingli Cliffs</div>
-<div class="card">Golden Bay</div>
-</div>
-
-</div>
-
-<!-- ITINERARY -->
-<div class="section">
-<h2>🗺 3-Day Itinerary</h2>
-
-<p><strong>Day 1:</strong> Valletta, Sliema, St Julian’s</p>
-<p><strong>Day 2:</strong> Mdina, Rabat, Dingli Cliffs</p>
-<p><strong>Day 3:</strong> Gozo Island & Blue Lagoon</p>
-
-</div>
-
-<!-- REVIEWS -->
-<div class="section">
-<h2>💬 Customer Reviews</h2>
-
-<div class="grid">
-<div class="card">⭐⭐⭐⭐⭐ Easy pickup, no waiting</div>
-<div class="card">⭐⭐⭐⭐⭐ Honest service</div>
-<div class="card">⭐⭐⭐⭐⭐ Best price</div>
-</div>
-
 </div>
 
 <!-- FAQ -->
 <div class="section" id="faq">
 <h2>❓ FAQ</h2>
-
-<p><strong>Minimum age?</strong> 21 years</p>
-<p><strong>Deposit?</strong> €500–€1000</p>
-<p><strong>Insurance?</strong> Available</p>
-<p><strong>Pickup?</strong> Airport or delivery</p>
-
+<p><strong>Minimum age:</strong> 21</p>
+<p><strong>Deposit:</strong> €500–€1000</p>
+<p><strong>Insurance:</strong> Available</p>
 </div>
 
 <!-- MAP -->
 <div class="section">
 <h2>📍 Find Us</h2>
-
 <iframe 
 src="https://www.google.com/maps?q=Quick+Car+Rental+Senglea+Malta&output=embed"
 width="100%" height="300">
 </iframe>
-
 </div>
 
 <!-- CONTACT -->
