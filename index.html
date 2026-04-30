@@ -1,407 +1,296 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Quick Rental Malta</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Quick Rental Malta | Car Hire Malta</title>
+<meta name="description" content="Affordable car rental in Malta with airport delivery. No hidden fees. Book fast via WhatsApp.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-body{
-margin:0;
-font-family:Arial;
-color:#fff;
+
+/* ===== RESET ===== */
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-#bgVideo{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-object-fit:cover;
-z-index:-2;
+/* ===== BODY ===== */
+body {
+    font-family:'Poppins',sans-serif;
+    background:#020617;
+    color:#fff;
+    line-height:1.6;
 }
 
-.overlay{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.75);
-z-index:-1;
+/* ===== CONTAINER ===== */
+.container {
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
 }
 
-:root{ --gold:#d4af37; }
-
-header{
-text-align:center;
-padding:20px;
-border-bottom:1px solid #222;
+/* ===== HEADER ===== */
+header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px;
 }
 
-h1{color:var(--gold);}
-
-.info-line{
-text-align:center;
-color:#aaa;
-font-size:14px;
-padding:0 15px;
-margin-top:-10px;
+.logo {
+    font-weight:700;
+    font-size:20px;
 }
 
-/* OPTIONS */
-.options{
-display:flex;
-gap:10px;
-max-width:900px;
-margin:20px auto;
-padding:0 15px;
-flex-wrap:wrap;
+nav a {
+    margin-left:20px;
+    text-decoration:none;
+    color:white;
+    opacity:0.8;
 }
 
-.option{
-flex:1;
-min-width:250px;
-background:rgba(17,17,17,0.9);
-border:1px solid #222;
-border-radius:10px;
-padding:15px;
-text-align:center;
+/* ===== HERO ===== */
+.hero {
+    text-align:center;
+    padding:80px 20px;
 }
 
-.option h3{
-color:var(--gold);
+.hero h1 {
+    font-size:42px;
+    margin-bottom:10px;
 }
 
-.option p{
-font-size:13px;
-color:#ccc;
-line-height:1.5;
+/* ===== BUTTON ===== */
+.btn {
+    background:#25D366;
+    padding:15px 30px;
+    border-radius:10px;
+    color:white;
+    text-decoration:none;
+    display:inline-block;
+    margin-top:20px;
+    font-weight:600;
 }
 
-.option button{
-margin-top:10px;
-width:100%;
-padding:10px;
-border:none;
-cursor:pointer;
-background:var(--gold);
-font-weight:bold;
+/* ===== SECTION ===== */
+.section {
+    margin:70px 0;
 }
 
-/* CARS */
-.cars{
-max-width:900px;
-margin:20px auto;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:15px;
-padding:0 15px;
+/* ===== GRID ===== */
+.grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
 }
 
-.car{
-background:rgba(17,17,17,0.9);
-padding:15px;
-border-radius:10px;
-text-align:center;
-border:1px solid #222;
+/* ===== CARD ===== */
+.card {
+    background:#0f172a;
+    padding:20px;
+    border-radius:15px;
 }
 
-.price{
-color:var(--gold);
-font-weight:bold;
-font-size:18px;
-margin-top:8px;
+/* ===== IMAGE ===== */
+.car-img {
+    width:100%;
+    border-radius:10px;
+    margin-bottom:10px;
 }
 
-/* BOOKING */
-.booking{
-max-width:650px;
-margin:40px auto;
-padding:20px;
-background:rgba(17,17,17,0.9);
-border-radius:10px;
+/* ===== LIST ===== */
+ul {
+    padding-left:20px;
+    margin-top:10px;
 }
 
-.plan-buttons{
-display:flex;
-gap:10px;
-margin-bottom:15px;
+/* ===== FOOTER ===== */
+.footer {
+    text-align:center;
+    padding:40px;
+    opacity:0.7;
 }
 
-.plan-btn{
-flex:1;
-padding:12px;
-border:none;
-cursor:pointer;
-background:#111;
-color:#fff;
-border:1px solid #333;
-border-radius:8px;
-font-weight:bold;
+/* ===== FLOAT ===== */
+.whatsapp {
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    padding:15px;
+    border-radius:50%;
+    color:white;
+    text-decoration:none;
 }
 
-.plan-btn.active{
-background:var(--gold);
-color:#000;
-}
-
-input,select{
-width:100%;
-padding:14px;
-margin:10px 0;
-background:#fff;
-border:1px solid #ccc;
-color:#000;
-border-radius:6px;
-font-size:16px;
-}
-
-button.main{
-background:var(--gold);
-border:none;
-padding:12px;
-width:100%;
-font-weight:bold;
-cursor:pointer;
-margin-top:10px;
-}
-
-.result{
-margin-top:10px;
-color:var(--gold);
-line-height:1.6;
-}
-
-/* INSURANCE */
-.insurance{
-max-width:900px;
-margin:60px auto;
-padding:20px;
-}
-
-.ins-box{
-background:rgba(17,17,17,0.9);
-border:1px solid #222;
-padding:15px;
-border-radius:10px;
-margin:10px 0;
-}
-
-.ins-box h3{
-color:var(--gold);
-}
-
-.ins-actions{
-display:flex;
-gap:10px;
-margin-top:10px;
-flex-wrap:wrap;
-}
-
-.ins-actions a{
-background:var(--gold);
-color:#000;
-padding:8px 12px;
-text-decoration:none;
-font-weight:bold;
-border-radius:6px;
-font-size:13px;
-}
 </style>
 </head>
 
 <body>
 
-<!-- VIDEO -->
-<video autoplay muted loop playsinline id="bgVideo">
-<source src="https://cdn.coverr.co/videos/coverr-driving-through-a-tunnel-1578/1080p.mp4" type="video/mp4">
-</video>
-
-<div class="overlay"></div>
-
 <header>
-<h1>QUICK RENTAL MALTA</h1>
+<div class="logo">Quick Rental</div>
+<nav>
+<a href="#cars">Cars</a>
+<a href="#guide">Guide</a>
+<a href="#faq">FAQ</a>
+<a href="#contact">Contact</a>
+</nav>
 </header>
 
-<p class="info-line">
-🚗 Delivery Malta & Gozo • Hassle-free rental • We bring the car to your location
-</p>
+<!-- HERO -->
+<div class="hero">
+<h1>🚗 Car Rental Malta</h1>
+<p>Affordable • Fast • No Hidden Fees</p>
+<p>Airport Delivery ✈️ • Book in 2 Minutes</p>
 
-<!-- OPTIONS -->
-<div class="options">
-
-<div class="option">
-<h3>Option 1</h3>
-<p>
-Start €4/day<br>
-Deposit €1200<br>
-Excess €1200
-</p>
-<button onclick="setPlan(1)">Select</button>
+<a class="btn" href="https://wa.me/35677038260">
+Book on WhatsApp
+</a>
 </div>
 
-<div class="option">
-<h3>Option 2</h3>
-<p>
-Start €9/day<br>
-Deposit €600<br>
-Excess €600
-</p>
-<button onclick="setPlan(2)">Select</button>
-</div>
+<div class="container">
 
-<div class="option">
-<h3>Option 3</h3>
-<p>
-Start €14/day<br>
-Deposit €300<br>
-Excess €300
-</p>
-<button onclick="setPlan(3)">Select</button>
+<!-- TRUST -->
+<div class="section">
+<h2>⭐ Why Tourists Choose Us</h2>
+<div class="grid">
+<div class="card">✔ Airport pickup</div>
+<div class="card">✔ Fast service (2–5 min)</div>
+<div class="card">✔ No hidden fees</div>
+<div class="card">✔ WhatsApp support</div>
 </div>
-
 </div>
 
 <!-- CARS -->
-<div class="cars">
+<div class="section" id="cars">
+<h2>🚘 Available Cars</h2>
 
-<div class="car">Aygo <div class="price" id="c0">€25/day</div></div>
-<div class="car">Yaris <div class="price" id="c1">€30/day</div></div>
-<div class="car">Polo <div class="price" id="c2">€35/day</div></div>
-<div class="car">Qashqai <div class="price" id="c3">€45/day</div></div>
+<div class="grid">
 
+<div class="card">
+<img class="car-img" src="https://via.placeholder.com/300x180">
+<h3>Fiat 500</h3>
+<p>Perfect for city driving</p>
+<p>€25/day</p>
 </div>
 
-<!-- BOOKING -->
-<div class="booking">
-
-<div class="plan-buttons">
-<button class="plan-btn" id="pbtn1">Option 1</button>
-<button class="plan-btn" id="pbtn2">Option 2</button>
-<button class="plan-btn" id="pbtn3">Option 3</button>
+<div class="card">
+<img class="car-img" src="https://via.placeholder.com/300x180">
+<h3>Toyota Aygo</h3>
+<p>Fuel efficient & compact</p>
+<p>€23/day</p>
 </div>
 
-<input id="name" placeholder="Full Name">
-
-<label>Pick-up</label>
-<input type="date" id="pickup">
-
-<label>Drop-off</label>
-<input type="date" id="dropoff">
-
-<input id="delivery" placeholder="Hotel / Airport / Address">
-
-<select id="car">
-<option value="0">Aygo</option>
-<option value="1">Yaris</option>
-<option value="2">Polo</option>
-<option value="3">Qashqai</option>
-</select>
-
-<button class="main" onclick="calc()">Calculate Price</button>
-
-<div class="result" id="result"></div>
-
-<button class="main" onclick="whatsapp()">WhatsApp Booking</button>
-
-</div>
-
-<!-- INSURANCE -->
-<div class="insurance">
-
-<h2 style="text-align:center;color:#d4af37;">Recommended Full Cover Insurance</h2>
-
-<div class="ins-box">
-<h3>RentalCover</h3>
-<p>Global leader in rental excess insurance</p>
-<div class="ins-actions">
-<a href="https://www.rentalcover.com" target="_blank">Visit</a>
-<a href="https://www.trustpilot.com/review/rentalcover.com" target="_blank">Reviews</a>
-</div>
-</div>
-
-<div class="ins-box">
-<h3>CarHireExcess</h3>
-<p>Trusted UK car hire excess provider</p>
-<div class="ins-actions">
-<a href="https://www.carhireexcess.co.uk/?variant=2" target="_blank">Visit</a>
-<a href="https://www.trustpilot.com/review/carhireexcess.co.uk" target="_blank">Reviews</a>
-</div>
+<div class="card">
+<img class="car-img" src="https://via.placeholder.com/300x180">
+<h3>BMW 1 Series</h3>
+<p>Comfort & performance</p>
+<p>€55/day</p>
 </div>
 
 </div>
+</div>
 
-<script>
+<!-- GUIDE -->
+<div class="section" id="guide">
+<h2>📍 Malta Travel Guide</h2>
 
-let plan=1;
-let prices=[];
+<p>Malta is one of the best destinations in Europe to explore by car. Renting a vehicle gives you full freedom to discover hidden beaches, historical towns, and scenic coastal roads.</p>
 
-function setPlan(p){
-plan=p;
+<p>Public transport can be slow during summer, so having your own car saves time and gives flexibility.</p>
 
-document.getElementById("pbtn1").classList.remove("active");
-document.getElementById("pbtn2").classList.remove("active");
-document.getElementById("pbtn3").classList.remove("active");
+</div>
 
-if(p==1) document.getElementById("pbtn1").classList.add("active");
-if(p==2) document.getElementById("pbtn2").classList.add("active");
-if(p==3) document.getElementById("pbtn3").classList.add("active");
+<!-- DRIVING -->
+<div class="section">
+<h2>🚦 Driving Tips in Malta</h2>
 
-let start=4;
-if(p==2) start=9;
-if(p==3) start=14;
+<ul>
+<li>Drive on the left side</li>
+<li>Roads are narrow in old towns</li>
+<li>Watch for scooters and pedestrians</li>
+<li>Parking is limited in busy areas</li>
+<li>Small cars are easier to drive</li>
+</ul>
 
-prices=[];
-for(let i=0;i<4;i++){
-prices[i]=start + (i*5);
-document.getElementById("c"+i).innerText="€"+prices[i]+"/day";
-}
-}
+</div>
 
-function calc(){
+<!-- PLACES -->
+<div class="section">
+<h2>🏝 Best Places to Visit</h2>
 
-if(!plan){
-alert("Select plan first");
-return;
-}
+<div class="grid">
+<div class="card">Blue Lagoon</div>
+<div class="card">Mdina Old City</div>
+<div class="card">Dingli Cliffs</div>
+<div class="card">Golden Bay</div>
+</div>
 
-let car=parseInt(document.getElementById("car").value);
+</div>
 
-let a=new Date(document.getElementById("pickup").value);
-let b=new Date(document.getElementById("dropoff").value);
+<!-- ITINERARY -->
+<div class="section">
+<h2>🗺 3-Day Itinerary</h2>
 
-let days=(b-a)/(1000*60*60*24);
+<p><strong>Day 1:</strong> Valletta, Sliema, St Julian’s</p>
+<p><strong>Day 2:</strong> Mdina, Rabat, Dingli Cliffs</p>
+<p><strong>Day 3:</strong> Gozo Island & Blue Lagoon</p>
 
-if(!days || days<=0){
-document.getElementById("result").innerText="Select valid dates";
-return;
-}
+</div>
 
-let total=prices[car]*days;
+<!-- REVIEWS -->
+<div class="section">
+<h2>💬 Customer Reviews</h2>
 
-document.getElementById("result").innerHTML=
-"Plan: Option "+plan+"<br>"+
-"Days: "+days+"<br>"+
-"<b>Total: €"+total.toFixed(2)+"</b>";
-}
+<div class="grid">
+<div class="card">⭐⭐⭐⭐⭐ Easy pickup, no waiting</div>
+<div class="card">⭐⭐⭐⭐⭐ Honest service</div>
+<div class="card">⭐⭐⭐⭐⭐ Best price</div>
+</div>
 
-function whatsapp(){
+</div>
 
-let name=document.getElementById("name").value;
-let car=document.getElementById("car").options[document.getElementById("car").selectedIndex].text;
+<!-- FAQ -->
+<div class="section" id="faq">
+<h2>❓ FAQ</h2>
 
-let msg=
-"Plan: "+plan+
-"%0AName: "+name+
-"%0ACar: "+car;
+<p><strong>Minimum age?</strong> 21 years</p>
+<p><strong>Deposit?</strong> €500–€1000</p>
+<p><strong>Insurance?</strong> Available</p>
+<p><strong>Pickup?</strong> Airport or delivery</p>
 
-window.open("https://wa.me/35677038260?text="+msg);
-}
+</div>
 
-setPlan(1);
+<!-- MAP -->
+<div class="section">
+<h2>📍 Find Us</h2>
 
-</script>
+<iframe 
+src="https://www.google.com/maps?q=Quick+Car+Rental+Senglea+Malta&output=embed"
+width="100%" height="300">
+</iframe>
+
+</div>
+
+<!-- CONTACT -->
+<div class="section" id="contact">
+<h2>📞 Contact</h2>
+<p>WhatsApp: +356 7703 8260</p>
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+<p>© 2026 Quick Rental Malta • Founded 2026</p>
+</div>
+
+<a class="whatsapp" href="https://wa.me/35677038260">💬</a>
 
 </body>
 </html>
