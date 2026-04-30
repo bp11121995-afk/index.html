@@ -62,6 +62,15 @@ section{
   font-weight:bold;
 }
 
+.summary{
+  margin-top:10px;
+  padding:10px;
+  background:#111;
+  border-radius:8px;
+  font-size:14px;
+  color:#ccc;
+}
+
 button{
   margin-top:10px;
   padding:10px;
@@ -104,18 +113,26 @@ button{
 
 <section>
   <h2>📅 Step 1: Choose Details</h2>
+
   <div class="booking-box">
     <input type="date" id="start">
     <input type="date" id="end">
 
     <select id="serviceType">
       <option value="Airport Pickup">✈ Airport Pickup</option>
-      <option value="Delivery">🚗 Delivery to Location</option>
+      <option value="Delivery">🚗 Delivery</option>
     </select>
 
-    <input type="text" id="location" placeholder="Enter location (optional)">
+    <select id="insurance">
+      <option value="No Insurance">❌ No Insurance</option>
+      <option value="Insurance Included">🛡 Insurance Included (+€5/day)</option>
+    </select>
+
+    <input type="text" id="location" placeholder="Location (optional)">
 
     <button onclick="showCars()">Show Cars</button>
+
+    <div class="summary" id="summary"></div>
   </div>
 </section>
 
@@ -125,22 +142,22 @@ button{
 </section>
 
 <section>
-<h2>📍 Location</h2>
+<h2>📍 Map</h2>
 <iframe class="map" src="https://www.google.com/maps?q=35.8880661,14.5171061&z=15&output=embed"></iframe>
 </section>
 
 <a class="whatsapp" href="https://wa.me/3560000000" target="_blank">WhatsApp</a>
 
 <script>
+const basePrice = 24;
+
 let cars=[
- {name:"Economy",price:6},
- {name:"Compact",price:8},
- {name:"Hatchback",price:10},
- {name:"Sedan",price:13},
- {name:"SUV",price:16},
- {name:"Luxury",price:20},
- {name:"Van",price:23},
- {name:"Convertible",price:26}
+ {name:"Economy"},
+ {name:"Compact"},
+ {name:"Hatchback"},
+ {name:"Sedan"},
+ {name:"SUV"},
+ {name:"Luxury"}
 ];
 
 function getDays(){
@@ -154,21 +171,29 @@ function getDays(){
 
 function showCars(){
  document.getElementById('carsSection').style.display="block";
+
  let days=getDays();
- let type=document.getElementById('serviceType').value;
- let loc=document.getElementById('location').value;
+ let insurance=document.getElementById('insurance').value;
+ let insuranceCost = (insurance === "Insurance Included") ? 5 : 0;
+
+ let pricePerDay = basePrice + insuranceCost;
+ let minTotal = pricePerDay * days;
+
+ document.getElementById('summary').innerHTML = 
+ `📊 Summary: ${days} day(s) | ${insurance} | From €${pricePerDay}/day | Estimated total from €${minTotal}`;
+
  let box=document.getElementById('cars');
  box.innerHTML="";
 
  cars.forEach(c=>{
-  let total=c.price*days;
+  let total = pricePerDay * days;
 
-  box.innerHTML+=`
+  box.innerHTML += `
   <div class='car'>
     <h3>${c.name}</h3>
-    <p class='price'>€${c.price}/day</p>
-    <p>Total: €${total}</p>
-    <button onclick="book('${c.name}',${c.price})">Book on WhatsApp</button>
+    <p class='price'>€${pricePerDay}/day</p>
+    <p><b>Total Price: €${total}</b></p>
+    <button onclick="book('${c.name}',${pricePerDay})">Book via WhatsApp</button>
   </div>
   `;
  });
@@ -176,11 +201,13 @@ function showCars(){
 
 function book(car,price){
  let days=getDays();
+ let insurance=document.getElementById('insurance').value;
  let type=document.getElementById('serviceType').value;
  let loc=document.getElementById('location').value;
+
  let total=days*price;
 
- let msg=`Booking:%0ACar: ${car}%0ADays: ${days}%0AService: ${type}%0ALocation: ${loc}%0ATotal: €${total}`;
+ let msg=`Booking:%0ACar: ${car}%0ADays: ${days}%0AService: ${type}%0AInsurance: ${insurance}%0ALocation: ${loc}%0ATotal Price: €${total}`;
 
  window.open(`https://wa.me/3560000000?text=${msg}`,'_blank');
 }
